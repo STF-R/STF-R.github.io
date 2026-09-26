@@ -58,3 +58,39 @@ body.is-preload, body { background-color:#071426 !important; }
 @media screen and (max-width:980px){.tech-grid{grid-template-columns:repeat(3,1fr)}.value-grid{grid-template-columns:1fr}}
 @media screen and (max-width:736px){#wrapper > .bg{background-attachment:scroll!important;background-position:center center!important}.tech-grid{grid-template-columns:repeat(2,1fr)}.expertise-grid .image img{height:210px}#data-flow{opacity:.56}.paradigm-mark{width:105px}#intro h1{letter-spacing:.035em}}
 @media (prefers-reduced-motion:reduce){#data-flow{display:none}.tech{transition:none}.paradigm-mark{animation:none}}
+
+/* 2026-09 UX pass: persistent navigation, media consistency and brand polish */
+.brand-visual {
+  position:relative; overflow:hidden; border-radius:10px;
+  border:1px solid rgba(178,205,230,.20);
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(7,20,38,.32));
+  box-shadow:0 20px 55px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04);
+}
+.brand-visual:after { content:""; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 45px rgba(111,190,255,.06); }
+.brand-visual img { display:block; width:100%; border-radius:9px; }
+
+.expertise-grid article .image.fit { height:245px; overflow:hidden; margin-bottom:1.6rem; }
+.expertise-grid article .image.fit img { width:100%; height:100%; object-fit:cover; object-position:center; transition:transform .48s cubic-bezier(.2,.65,.25,1),opacity .3s ease; }
+@media (hover:hover) and (pointer:fine){.expertise-grid article:hover .image.fit img{transform:scale(1.045);opacity:1}}
+
+.floating-nav { position:fixed; top:18px; right:22px; z-index:10020; opacity:0; visibility:hidden; transform:translateY(-8px); transition:opacity .2s ease,transform .2s ease,visibility .2s; }
+.floating-nav.is-visible { opacity:1; visibility:visible; transform:none; }
+.floating-nav-panel { display:flex; align-items:center; gap:2px; padding:6px; border:1px solid rgba(178,205,230,.18); border-radius:9px; background:rgba(7,20,38,.88); backdrop-filter:blur(15px); -webkit-backdrop-filter:blur(15px); box-shadow:0 12px 38px rgba(0,0,0,.28); }
+.floating-nav-panel a { border:0; color:#edf4fa; font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.08em; line-height:1; padding:.78rem .88rem; text-transform:uppercase; text-decoration:none; border-radius:6px; transition:background .18s ease,color .18s ease; }
+.floating-nav-panel a:hover { background:rgba(255,255,255,.09); color:#fff!important; }
+.floating-nav-toggle { display:none; }
+
+@media screen and (max-width:736px){
+  .expertise-grid article .image.fit{height:210px}
+  .floating-nav{top:14px;right:14px}
+  .floating-nav-toggle{display:flex;width:44px;height:44px;padding:0;border:1px solid rgba(178,205,230,.20);border-radius:9px;background:rgba(7,20,38,.90);box-shadow:0 10px 28px rgba(0,0,0,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer}
+  .floating-nav-toggle span{display:block;width:17px;height:1.5px;background:#edf4fa;transition:transform .2s ease,opacity .2s ease}
+  .floating-nav.is-open .floating-nav-toggle span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .floating-nav.is-open .floating-nav-toggle span:nth-child(2){opacity:0}
+  .floating-nav.is-open .floating-nav-toggle span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+  .floating-nav-panel{position:absolute;top:52px;right:0;min-width:190px;display:flex;flex-direction:column;align-items:stretch;padding:7px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+  .floating-nav.is-open .floating-nav-panel{opacity:1;visibility:visible;transform:none}
+  .floating-nav-panel a{padding:.9rem 1rem;text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.expertise-grid article .image.fit img,.floating-nav,.floating-nav-panel{transition:none!important}}
+@media screen and (max-width:736px){#navPanelToggle,#navPanel{display:none!important}body.is-navPanel-visible #wrapper{transform:none!important}}

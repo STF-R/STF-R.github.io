@@ -21,5 +21,23 @@
     }
     addEventListener('resize',reset,{passive:true});reset();requestAnimationFrame(draw);
   }
-  document.querySelectorAll('.contact-form').forEach(function(form){form.addEventListener('submit',async function(e){e.preventDefault();var status=form.querySelector('.form-status'),button=form.querySelector('[type="submit"]');status.className='form-status';status.textContent='Envoi en cours…';button.disabled=true;try{var r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});if(!r.ok)throw new Error('send');form.reset();status.classList.add('success');status.textContent='Message envoyé. Merci, nous revenons vers vous rapidement.';}catch(err){status.classList.add('error');status.textContent='Le message n’a pas pu être envoyé. Vous pouvez écrire directement à sr@paradigm-ai.fr.';}finally{button.disabled=false;}});});
+  // Persistent navigation: appears after the page's primary navigation leaves the viewport.
+  var primaryNav=document.getElementById('nav');
+  if(primaryNav){
+    var floating=document.createElement('div');
+    floating.className='floating-nav';
+    floating.setAttribute('aria-label','Navigation rapide');
+    floating.innerHTML='<button class="floating-nav-toggle" type="button" aria-expanded="false" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button><nav class="floating-nav-panel"><a href="index.html">Expertises</a><a href="thisisparadigmai.html">À propos</a><a href="index.html#contact">Contact</a></nav>';
+    document.body.appendChild(floating);
+    var toggle=floating.querySelector('.floating-nav-toggle');
+    function setFloating(){
+      var r=primaryNav.getBoundingClientRect();
+      floating.classList.toggle('is-visible',r.bottom<12);
+      if(r.bottom>=12){floating.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}
+    }
+    toggle.addEventListener('click',function(){var open=floating.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open));});
+    floating.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){floating.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');});});
+    document.addEventListener('click',function(e){if(!floating.contains(e.target)){floating.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});
+    addEventListener('scroll',setFloating,{passive:true});addEventListener('resize',setFloating,{passive:true});setFloating();
+  }
 })();

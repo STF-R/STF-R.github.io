@@ -45,7 +45,7 @@
       <article id="data-engineering"><header><span class="date">Socle technique</span><h2>Data Engineering & plateformes</h2></header><div class="image fit"><img src="images/big_data.jpg" alt="Data Engineering et plateformes" /></div><p>Conception de pipelines, intégration de sources, traitements distribués, stockage et exposition des données. L’objectif : des architectures robustes, maintenables et adaptées aux usages analytiques comme aux applications IA.</p></article>
       <article id="genai"><header><span class="date">LLM · RAG · Agents</span><h2>IA générative & systèmes agentiques</h2></header><div class="image fit"><img src="images/IA.jpg" alt="Intelligence artificielle générative" /></div><p>Conception de solutions fondées sur les LLM : RAG, recherche augmentée, agents spécialisés, orchestration multi-agents, outils et intégration au SI. Nous privilégions des architectures contrôlables, observables et conçues pour la production.</p></article>
       <article id="ml"><header><span class="date">Modèles & décision</span><h2>Machine Learning & modélisation</h2></header><div class="image fit"><img src="images/transformation_digitale2.jpg" alt="Machine Learning et modélisation" /></div><p>Prévision, classification, détection d’anomalies, scoring et optimisation. Nous sélectionnons les méthodes en fonction du problème, de la qualité des données et des contraintes opérationnelles plutôt qu’en fonction d’un effet de mode.</p></article>
-      <article id="mlops"><header><span class="date">Production</span><h2>Industrialisation & MLOps</h2></header><div class="image fit"><img src="images/pic02.jpg" alt="Industrialisation des solutions IA" /></div><p>Conteneurisation, déploiement, CI/CD, observabilité, évaluation et suivi des modèles et agents. Nous mettons en place les briques nécessaires pour exploiter durablement les solutions Data & IA.</p></article>
+      <article id="mlops"><header><span class="date">Production</span><h2>Industrialisation & MLOps</h2></header><div class="image fit"><img src="images/mlops.jpg" alt="Industrialisation et MLOps" /></div><p>Conteneurisation, déploiement, CI/CD, observabilité, évaluation et suivi des modèles et agents. Nous mettons en place les briques nécessaires pour exploiter durablement les solutions Data & IA.</p></article>
       <article id="visualisation"><header><span class="date">Pilotage</span><h2>BI & visualisation</h2></header><div class="image fit"><img src="images/viz.jpg" alt="Tableaux de bord et visualisation" /></div><p>Tableaux de bord, indicateurs et applications analytiques conçus pour rendre l’information immédiatement exploitable, avec une attention particulière portée à la lisibilité, aux usages et à la fiabilité des métriques.</p></article>
       <article id="accompagnement"><header><span class="date">Transmission</span><h2>Accompagnement & formation</h2></header><div class="image fit"><img src="images/formation.jpg" alt="Accompagnement et formation" /></div><p>Ateliers, montée en compétence et accompagnement des équipes sur la Data, le Machine Learning, l’IA générative et les nouveaux usages agentiques, avec des contenus adaptés au niveau technique et aux objectifs des participants.</p></article>
     </section>
@@ -53,15 +53,15 @@
 
   <footer id="footer">
     <section id="contact">
-      <form class="contact-form" method="post" action="https://formspree.io/f/xoevnzzw">
+      <form id="contact-form-home" class="contact-form" method="post" action="https://formspree.io/f/xoevnzzw">
         <div class="fields">
-          <div class="field"><label for="name">Nom</label><input type="text" name="name" id="name" autocomplete="name" required /></div>
-          <div class="field"><label for="email">Email</label><input type="email" name="email" id="email" autocomplete="email" required /></div>
-          <div class="field"><label for="message">Message</label><textarea name="message" id="message" rows="4" required></textarea></div>
+          <div class="field"><label for="name">Nom</label><input type="text" name="name" id="name" autocomplete="name" data-fs-field required /></div>
+          <div class="field"><label for="email">Email</label><input type="email" name="email" id="email" autocomplete="email" data-fs-field required /></div>
+          <div class="field"><label for="message">Message</label><textarea name="message" id="message" rows="4" data-fs-field required></textarea></div>
         </div>
         <input type="hidden" name="_subject" value="Nouveau message depuis paradigm-ai.fr" />
-        <ul class="actions"><li><input type="submit" value="Envoyer" /></li></ul>
-        <p class="form-status" role="status" aria-live="polite"></p>
+        <ul class="actions"><li><input type="submit" value="Envoyer" data-fs-submit-btn /></li></ul>
+        <p class="form-status" data-fs-success role="status" aria-live="polite"></p><p class="form-status error" data-fs-error role="alert"></p>
       </form>
     </section>
     <section class="split contact">
@@ -71,5 +71,5 @@
   </footer>
   <div id="copyright"><ul><li>&copy; Paradigm AI</li><li>Data & Intelligence artificielle</li></ul></div>
 </div>
-<script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrollex.min.js"></script><script src="assets/js/jquery.scrolly.min.js"></script><script src="assets/js/browser.min.js"></script><script src="assets/js/breakpoints.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script><script src="assets/js/custom.js"></script>
+<script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrollex.min.js"></script><script src="assets/js/jquery.scrolly.min.js"></script><script src="assets/js/browser.min.js"></script><script src="assets/js/breakpoints.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script><script>window.formspree=window.formspree||function(){(formspree.q=formspree.q||[]).push(arguments);};formspree('initForm',{formElement:'#contact-form-home',formId:'xoevnzzw'});</script><script src="https://unpkg.com/@formspree/ajax@1" defer></script><script src="assets/js/custom.js"></script>
 </body></html>
