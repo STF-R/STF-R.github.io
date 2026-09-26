@@ -515,3 +515,109 @@ body.paradigm-corporate .floating-nav:not(.is-visible){opacity:0!important;visib
   .legacy-scroll{left:43%;top:81%;width:14%;height:10%}
   body.paradigm-corporate.home-cinematic::before{background-position:center center;filter:brightness(.70) saturate(.76)}
 }
+
+/* 2026-09 — V8 fixed cover: the corporate site slides over the cover */
+body.home-cinematic #wrapper {
+  position:relative;
+  z-index:1;
+  overflow:visible;
+}
+body.home-cinematic .cinematic-hero {
+  position:fixed !important;
+  inset:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  height:100svh !important;
+  margin:0 !important;
+  z-index:0;
+  transform:none !important;
+  overflow:hidden;
+}
+body.home-cinematic .cinematic-hero-art {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+}
+body.paradigm-corporate.home-cinematic .corp-main {
+  position:relative;
+  z-index:2;
+  margin-top:100vh !important;
+  margin-top:100svh !important;
+}
+body.paradigm-corporate.home-cinematic .corp-footer {
+  position:relative;
+  z-index:2;
+}
+/* Keep the fixed cover interactive only while it is actually exposed. */
+body.home-cinematic .cinematic-hero {pointer-events:auto}
+@media(max-width:736px){
+  body.paradigm-corporate.home-cinematic .corp-main {
+    margin-top:100vh !important;
+    margin-top:100svh !important;
+  }
+}
+
+/* 2026-09 — V9 typographic system: coherent, readable, restrained */
+:root{
+  --type-body:clamp(1rem,.96rem + .16vw,1.08rem);
+  --type-small:.82rem;
+  --type-label:.74rem;
+  --type-h3:clamp(1.15rem,1.05rem + .35vw,1.38rem);
+  --type-h2:clamp(1.65rem,1.35rem + .9vw,2.35rem);
+  --type-h1:clamp(2.35rem,1.8rem + 2vw,3.9rem);
+  --type-display:clamp(2.7rem,2.05rem + 2.4vw,4.6rem);
+  --leading-body:1.72;
+  --leading-heading:1.08;
+}
+body.paradigm-corporate{font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body.paradigm-corporate .section-kicker,
+body.paradigm-corporate .eyebrow{font-size:var(--type-label);line-height:1.35;letter-spacing:.16em}
+body.paradigm-corporate .section-intro h1,
+body.paradigm-corporate .conviction-copy h1,
+body.paradigm-corporate .contact-copy h1{
+  font-size:var(--type-h1);
+  line-height:var(--leading-heading);
+  letter-spacing:-.025em;
+  font-weight:450;
+}
+body.paradigm-corporate .section-intro p,
+body.paradigm-corporate .conviction-copy>p,
+body.paradigm-corporate .contact-copy>p,
+body.paradigm-corporate .about-hero-copy>p:last-child,
+body.paradigm-corporate .narrative-grid p{
+  font-size:var(--type-body);
+  line-height:var(--leading-body);
+  letter-spacing:0;
+}
+body.paradigm-corporate .expertise-list h2{font-size:var(--type-h3);line-height:1.32;font-weight:500;letter-spacing:-.012em}
+body.paradigm-corporate .expertise-list article>p,
+body.paradigm-corporate .approach-flow p{font-size:clamp(.96rem,.93rem + .1vw,1.02rem);line-height:1.7}
+body.paradigm-corporate .approach-flow h3{font-size:var(--type-h3);line-height:1.3;margin-top:2rem}
+body.paradigm-corporate .expertise-no,
+body.paradigm-corporate .approach-flow span,
+body.paradigm-corporate .principles strong,
+body.paradigm-corporate .tech-lines span,
+body.paradigm-corporate .corp-form label{font-size:var(--type-label);line-height:1.4}
+body.paradigm-corporate .principles span{font-size:.98rem;line-height:1.55}
+body.paradigm-corporate .tech-lines strong{font-size:1.02rem;line-height:1.55}
+body.paradigm-corporate .corp-link,
+body.paradigm-corporate .corp-button{font-size:.78rem;line-height:1.25;letter-spacing:.11em}
+body.paradigm-corporate .contact-meta{font-size:.95rem!important;line-height:1.7!important}
+body.paradigm-corporate .about-hero h1{font-size:var(--type-display);line-height:1.04;letter-spacing:-.03em;font-weight:450}
+body.paradigm-corporate .narrative-grid h2{font-size:var(--type-h2);line-height:1.15;letter-spacing:-.02em;font-weight:450}
+body.paradigm-corporate .corp-footer{font-size:.72rem;line-height:1.5;letter-spacing:.09em}
+body.paradigm-corporate .floating-nav-panel a{font-size:.74rem;letter-spacing:.075em}
+/* Preserve readable measure even on the new wide layout. */
+body.paradigm-corporate .section-intro p{max-width:34rem}
+body.paradigm-corporate .conviction-copy>p{max-width:46rem}
+body.paradigm-corporate .contact-copy>p{max-width:38rem}
+body.paradigm-corporate .expertise-list article>p{max-width:46rem}
+@media(max-width:600px){
+  :root{--type-body:1rem;--type-h1:clamp(2rem,9vw,2.75rem);--type-display:clamp(2.35rem,11vw,3.25rem)}
+  body.paradigm-corporate .section-intro h1{font-size:var(--type-h1)}
+  body.paradigm-corporate .section-kicker,
+  body.paradigm-corporate .eyebrow{letter-spacing:.13em}
+}
