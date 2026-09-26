@@ -24,20 +24,50 @@
     addEventListener('resize',reset,{passive:true});reset();requestAnimationFrame(draw);
   }
 
-  /* Persistent navigation. */
+  /* Persistent navigation: kept outside #wrapper so position:fixed is viewport-based. */
   var primaryNav=document.getElementById('nav');
   var floating=document.querySelector('.floating-nav');
   if(primaryNav && floating){
     var toggle=floating.querySelector('.floating-nav-toggle');
-    function setFloating(){
-      var show=primaryNav.getBoundingClientRect().bottom<12;
-      floating.classList.toggle('is-visible',show);
-      if(!show){floating.classList.remove('is-open');if(toggle)toggle.setAttribute('aria-expanded','false');}
+    var navThreshold=0;
+
+    function updateThreshold(){
+      /* Absolute document position of the bottom of the primary navigation. */
+      var rect=primaryNav.getBoundingClientRect();
+      navThreshold=window.scrollY+rect.bottom;
     }
-    if(toggle)toggle.addEventListener('click',function(e){e.stopPropagation();var open=floating.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open));});
-    floating.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){floating.classList.remove('is-open');if(toggle)toggle.setAttribute('aria-expanded','false');});});
-    document.addEventListener('click',function(e){if(!floating.contains(e.target)){floating.classList.remove('is-open');if(toggle)toggle.setAttribute('aria-expanded','false');}});
-    addEventListener('scroll',setFloating,{passive:true});addEventListener('resize',setFloating,{passive:true});setFloating();
+
+    function closeFloating(){
+      floating.classList.remove('is-open');
+      if(toggle)toggle.setAttribute('aria-expanded','false');
+    }
+
+    function setFloating(){
+      var show=window.scrollY>Math.max(80,navThreshold-12);
+      floating.classList.toggle('is-visible',show);
+      if(!show)closeFloating();
+    }
+
+    if(toggle)toggle.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var open=floating.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded',String(open));
+    });
+
+    floating.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',closeFloating);
+    });
+
+    document.addEventListener('click',function(e){
+      if(!floating.contains(e.target))closeFloating();
+    });
+
+    addEventListener('scroll',setFloating,{passive:true});
+    addEventListener('resize',function(){updateThreshold();setFloating();},{passive:true});
+    addEventListener('load',function(){updateThreshold();setFloating();},{once:true});
+    updateThreshold();
+    setFloating();
   }
 
   /* Formspree AJAX with native HTML POST fallback if JavaScript is unavailable. */

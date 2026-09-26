@@ -111,3 +111,11 @@ body.is-preload, body { background-color:#071426 !important; }
 .floating-nav{pointer-events:none}
 .floating-nav.is-visible{pointer-events:auto}
 @media screen and (min-width:737px){.floating-nav-toggle{display:none!important}.floating-nav-panel{display:flex!important;opacity:1!important;visibility:visible!important;transform:none!important}}
+
+/* Floating navigation must remain attached to the viewport, independently of Massively's transformed wrapper. */
+body > .floating-nav { position: fixed !important; top: 18px; right: 22px; left: auto; bottom: auto; z-index: 10050; }
+@media screen and (max-width:736px) {
+  body > .floating-nav { top: 14px; right: 14px; left: auto; bottom: auto; }
+  body > .floating-nav .floating-nav-toggle { position: relative; z-index: 2; }
+  body > .floating-nav .floating-nav-panel { top: 52px; right: 0; left: auto; bottom: auto; }
+}
