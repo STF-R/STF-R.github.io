@@ -97,21 +97,31 @@
   });
 })();
 
-/* V15 — active section state for the persistent navigation. */
+/* V17 — deterministic active section state for the persistent navigation. */
 (function(){
   'use strict';
-  if(!('IntersectionObserver' in window)) return;
   var links=Array.prototype.slice.call(document.querySelectorAll('.floating-nav-panel a[href^="#"]'));
-  if(!links.length) return;
-  var map={};
-  links.forEach(function(link){var id=link.getAttribute('href').slice(1);if(id)map[id]=link;});
-  var sections=Object.keys(map).map(function(id){return document.getElementById(id);}).filter(Boolean);
-  var observer=new IntersectionObserver(function(entries){
-    var visible=entries.filter(function(e){return e.isIntersecting;}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio;});
-    if(!visible.length)return;
+  if(!links.length)return;
+  var items=links.map(function(link){
+    var id=link.getAttribute('href').slice(1);
+    return {link:link,section:document.getElementById(id)};
+  }).filter(function(item){return item.section;});
+  if(!items.length)return;
+  var ticking=false;
+  function updateActive(){
+    ticking=false;
+    var probe=Math.max(96,window.innerHeight*.30);
+    var active=items[0];
+    for(var i=0;i<items.length;i++){
+      var rect=items[i].section.getBoundingClientRect();
+      if(rect.top<=probe)active=items[i];
+      if(rect.top<=probe && rect.bottom>probe){active=items[i];break;}
+    }
     links.forEach(function(link){link.removeAttribute('aria-current');});
-    var active=map[visible[0].target.id];
-    if(active)active.setAttribute('aria-current','true');
-  },{rootMargin:'-18% 0px -62% 0px',threshold:[0,.15,.35,.6]});
-  sections.forEach(function(section){observer.observe(section);});
+    active.link.setAttribute('aria-current','true');
+  }
+  function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(updateActive);}}
+  addEventListener('scroll',requestUpdate,{passive:true});
+  addEventListener('resize',requestUpdate,{passive:true});
+  updateActive();
 })();
