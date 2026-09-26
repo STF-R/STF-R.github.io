@@ -296,3 +296,72 @@ body.paradigm-corporate .floating-nav-panel{background:rgba(3,11,21,.72);border-
 .about-brand{position:absolute;top:2.4rem;left:max(5rem,calc((100vw - 1320px)/2 + 5rem));display:flex;align-items:center;gap:1rem;border:0!important;color:#e8f0f7!important;font-size:.72rem;letter-spacing:.28em}.rings{position:relative;width:46px;height:24px}.rings i{position:absolute;width:24px;height:24px;border:1px solid #e6eef6;border-radius:50%}.rings i+ i{left:16px;border-color:#6bbcff}.about-hero-copy{position:relative;z-index:2;max-width:800px}.about-hero h1{font-size:clamp(3.5rem,6.2vw,6.8rem);margin-bottom:2rem}.about-hero-copy>p:last-child{max-width:680px}.about-orbit{position:absolute;right:17%;top:48%;z-index:2;color:#8dc9ff;font-family:serif;font-size:2rem}.narrative-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:8rem;margin-top:3.5rem}.narrative-grid h2{margin:0;color:#edf4fa;font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;font-size:clamp(2rem,3vw,3.4rem);font-weight:400;letter-spacing:-.025em;text-transform:none;line-height:1.15}.narrative-grid p{color:#94a7b9;line-height:1.85}
 @media(max-width:900px){.corp-section{padding:6rem 2rem}.section-intro,.conviction-section,.contact-section,.narrative-grid{grid-template-columns:1fr;gap:2.5rem}.section-intro{margin-bottom:3.5rem}.expertise-list article{grid-template-columns:44px 1fr;gap:1.4rem}.expertise-list article>p{grid-column:2}.approach-flow{grid-template-columns:1fr 1fr}.approach-flow>div:nth-child(2){border-right:0}.conviction-section,.contact-section{gap:4rem}.corp-footer{padding:2rem;gap:2rem}.about-hero{padding:7rem 2rem 4rem;min-height:70svh}.about-brand{left:2rem;top:2rem}.about-hero:after{right:-300px}.about-orbit{display:none}}
 @media(max-width:600px){.corp-section{padding:5rem 1.35rem}.section-intro h1{font-size:2.7rem}.expertise-list article{grid-template-columns:32px 1fr;gap:1rem;padding:2rem 0}.expertise-list article:hover{padding-left:0;padding-right:0;background:none}.approach-flow{grid-template-columns:1fr}.approach-flow>div,.approach-flow>div:not(:first-child){min-height:0;padding:2rem 0;border-right:0;border-bottom:1px solid rgba(137,185,230,.12)}.tech-lines>div{grid-template-columns:1fr;gap:.55rem}.corp-footer{flex-direction:column}.about-hero h1{font-size:3.2rem}.cinematic-hero-art{object-position:50% 50%}}
+\n\n/* 2026-09 — V5 fixed cinematic background + unified scrolling corporate surface */
+body.paradigm-corporate.home-cinematic {
+  background:#020913;
+}
+body.paradigm-corporate.home-cinematic::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background-image:url("../../images/hero-cinematic.png");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  transform:scale(1.015);
+}
+body.paradigm-corporate.home-cinematic::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(1,8,17,.34) 0%,rgba(2,9,19,.50) 42%,rgba(2,9,19,.68) 100%),
+    radial-gradient(circle at 50% 38%,rgba(4,15,28,.08),rgba(1,7,15,.34) 76%);
+}
+body.home-cinematic #wrapper,
+body.paradigm-corporate #wrapper {background:transparent!important;overflow:visible}
+body.home-cinematic .cinematic-hero {background:transparent}
+body.home-cinematic .cinematic-hero-art {
+  opacity:.72;
+  filter:brightness(.72) saturate(.78) contrast(.96);
+}
+/* The content becomes one continuous high-end glass surface over the fixed visual. */
+body.paradigm-corporate .corp-main {
+  position:relative;
+  background:linear-gradient(180deg,rgba(3,12,23,.88),rgba(3,11,21,.93) 18%,rgba(3,11,21,.90) 82%,rgba(3,11,21,.95));
+  border-top:1px solid rgba(135,190,238,.14);
+  box-shadow:0 -28px 90px rgba(0,0,0,.24);
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+}
+body.paradigm-corporate .corp-main:before {
+  opacity:.62;
+  background-image:linear-gradient(rgba(108,164,218,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(108,164,218,.022) 1px,transparent 1px);
+  background-size:96px 96px;
+}
+body.paradigm-corporate .corp-section {
+  background:linear-gradient(90deg,rgba(3,12,23,.18),rgba(7,20,35,.26) 50%,rgba(3,12,23,.18));
+  border-bottom-color:rgba(137,185,230,.11);
+}
+body.paradigm-corporate .conviction-section {padding-top:9rem;padding-bottom:9rem}
+body.paradigm-corporate .corp-footer {
+  max-width:none;
+  padding-left:max(5rem,calc((100vw - 1320px)/2 + 5rem));
+  padding-right:max(5rem,calc((100vw - 1320px)/2 + 5rem));
+  background:rgba(2,9,18,.94);
+  border-top:1px solid rgba(137,185,230,.10);
+}
+@media (max-width:900px){
+  body.paradigm-corporate.home-cinematic::before{background-position:center center;transform:none}
+  body.home-cinematic .cinematic-hero-art{opacity:.68;filter:brightness(.68) saturate(.74)}
+  body.paradigm-corporate .corp-main{backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+  body.paradigm-corporate .corp-footer{padding-left:2rem;padding-right:2rem}
+}
+@media (max-width:600px){
+  body.paradigm-corporate.home-cinematic::after{background:linear-gradient(180deg,rgba(1,8,17,.38),rgba(2,9,19,.72))}
+  body.paradigm-corporate .corp-main{background:rgba(3,11,21,.94)}
+}
+@media (prefers-reduced-motion:reduce){body.paradigm-corporate.home-cinematic::before{transform:none}}
