@@ -807,3 +807,53 @@ body.paradigm-corporate .corp-form .form-status{margin:.9rem 0 0;font-size:.9rem
   body.paradigm-corporate .corp-form .fields{grid-template-columns:1fr}
   body.paradigm-corporate .corp-form .field:nth-child(3){grid-column:auto}
 }
+
+/* 2026-09 — V12 individual technology cards, restored from the validated earlier site */
+body.paradigm-corporate .tech-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:.9rem;
+  margin-top:3.5rem;
+}
+body.paradigm-corporate .tech-grid .tech{
+  box-sizing:border-box;
+  min-width:0;
+  min-height:7.2rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:1.35rem;
+  padding:1.25rem 1.3rem;
+  border:1px solid rgba(137,185,230,.14);
+  background:linear-gradient(145deg,rgba(14,31,49,.58),rgba(5,17,31,.42));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018);
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+body.paradigm-corporate .tech-grid .tech:hover{
+  transform:translateY(-2px);
+  border-color:rgba(137,185,230,.26);
+  background:linear-gradient(145deg,rgba(17,37,58,.66),rgba(6,19,34,.5));
+}
+body.paradigm-corporate .tech-grid .tech strong{
+  display:block;
+  overflow-wrap:anywhere;
+  color:#edf4fa;
+  font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  font-size:clamp(1rem,.96rem + .16vw,1.12rem);
+  font-weight:500;
+  line-height:1.25;
+  letter-spacing:-.01em;
+}
+body.paradigm-corporate .tech-grid .tech span{
+  display:block;
+  color:#7894ae;
+  font-size:.78rem;
+  font-weight:500;
+  line-height:1.35;
+  letter-spacing:.06em;
+  text-transform:none;
+}
+@media(max-width:1100px){body.paradigm-corporate .tech-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){body.paradigm-corporate .tech-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}body.paradigm-corporate .tech-grid .tech{min-height:6.6rem;padding:1.05rem}}
+@media(max-width:380px){body.paradigm-corporate .tech-grid{grid-template-columns:1fr}}
+@media(hover:none){body.paradigm-corporate .tech-grid .tech:hover{transform:none}}
