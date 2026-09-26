@@ -120,33 +120,88 @@ body > .floating-nav { position: fixed !important; top: 18px; right: 22px; left:
   body > .floating-nav .floating-nav-panel { top: 52px; right: 0; left: auto; bottom: auto; }
 }
 
+/* 2026-09 — exact cinematic hero composition */
+body.home-cinematic {}
+.cinematic-hero {
+  position: relative;
+  z-index: 2;
+  width: min(100vw, 1671px);
+  margin: 0 auto;
+  aspect-ratio: 1671 / 941;
+  overflow: hidden;
+  background: #020b15;
+  box-shadow: 0 30px 90px rgba(0,0,0,.42);
+}
+.cinematic-hero-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.cinematic-hit {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+}
+.cinematic-hit:focus-visible {
+  outline: 2px solid rgba(134,190,255,.95);
+  outline-offset: 3px;
+  border-radius: 5px;
+}
+.sr-only {
+  position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}
+/* Hit zones are aligned to the generated reference artwork. */
+.cinematic-home      { left:34.6%; top:2.1%; width:5.2%; height:5%; }
+.cinematic-expertise { left:39.7%; top:2.1%; width:6.2%; height:5%; }
+.cinematic-approche  { left:46.6%; top:2.1%; width:6.7%; height:5%; }
+.cinematic-about     { left:53.3%; top:2.1%; width:6.8%; height:5%; }
+.cinematic-contact   { left:60.1%; top:2.1%; width:6.3%; height:5%; }
+.cinematic-exchange  { left:76.3%; top:2.1%; width:13.8%; height:5.3%; }
+.cinematic-cta       { left:40.5%; top:55.2%; width:18.7%; height:5.2%; }
+.cinematic-scroll    { left:48.3%; top:65.2%; width:3.2%; height:7.2%; }
+.cinematic-card-1    { left:12.5%; top:81.4%; width:16.5%; height:14%; }
+.cinematic-card-2    { left:34.0%; top:81.4%; width:16.5%; height:14%; }
+.cinematic-card-3    { left:55.5%; top:81.4%; width:16.5%; height:14%; }
+.cinematic-card-4    { left:77.0%; top:81.4%; width:16.5%; height:14%; }
 
-/* 2026-09 — Paradigm cinematic neural / mathematical direction */
-:root{--pai-navy:#020b16;--pai-panel:#071525;--pai-blue:#73b9ff;--pai-gold:#e5a15b;--pai-ink:#eaf3fb}
-#wrapper>.bg{background:#020b16!important;background-image:none!important}
-#data-flow{opacity:.16!important;mix-blend-mode:screen}
-.paradigm-hero{position:relative!important;min-height:100vh!important;height:auto;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden;padding:9rem 1.5rem 8rem!important;background:#020b16 url("../../images/hero-neural-math.svg") center/cover no-repeat!important;isolation:isolate}
-.paradigm-hero:before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 43%,rgba(4,17,31,.02) 0,rgba(2,11,22,.18) 34%,rgba(2,11,22,.48) 72%,rgba(2,11,22,.72) 100%);pointer-events:none}
-.paradigm-hero:after{content:"";position:absolute;inset:auto 0 0;height:24%;z-index:0;background:linear-gradient(180deg,transparent,#020b16 92%);pointer-events:none}
-.hero-atmosphere{position:absolute;inset:-10%;z-index:0;background:radial-gradient(circle at 83% 40%,rgba(229,161,91,.08),transparent 20%),radial-gradient(circle at 16% 48%,rgba(72,157,239,.09),transparent 22%);animation:paiAtmosphere 11s ease-in-out infinite alternate;pointer-events:none}
-@keyframes paiAtmosphere{to{opacity:.7;transform:scale(1.025)}}
-.hero-inner{position:relative;z-index:2;width:min(940px,90vw);margin:0 auto;text-align:center}
-.hero-mark{width:126px!important;margin:0 auto .4rem!important;animation:paiMark 6s ease-in-out infinite!important;filter:drop-shadow(0 0 18px rgba(92,168,255,.2))!important}
-.hero-mark svg{overflow:visible}.hero-mark circle{fill:none;stroke-width:2!important}.hero-mark .mark-left{stroke:#f4f8fc!important}.hero-mark .mark-right{stroke:#73aaf7!important}
-@keyframes paiMark{50%{filter:drop-shadow(0 0 28px rgba(93,170,255,.38));opacity:.94}}
-.hero-brand{font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;color:#c7d9ec;font-size:1.05rem;font-weight:400;letter-spacing:.36em;text-transform:uppercase;margin:0 0 2.4rem;padding-left:.36em}
-.paradigm-hero h1{font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif!important;color:#f6f9fc!important;font-size:clamp(2.45rem,4.1vw,4.45rem)!important;line-height:1.12!important;font-weight:400!important;letter-spacing:.12em!important;text-transform:uppercase!important;margin:0!important;text-shadow:0 4px 36px rgba(0,0,0,.65)!important}
-.paradigm-hero h1 span{font-weight:300;color:#e5edf6}
-.paradigm-hero p{max-width:760px;margin:1.8rem auto 0!important;color:rgba(211,225,239,.78)!important;font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif!important;font-size:.94rem!important;line-height:1.8!important;letter-spacing:.035em!important;text-transform:none!important;font-style:normal!important}
-.hero-actions{margin-top:2.1rem}.hero-cta{display:inline-flex;align-items:center;gap:1.5rem;border:1px solid rgba(232,177,116,.65)!important;border-radius:4px;padding:1rem 1.35rem 1rem 1.6rem;color:#f5f8fb!important;font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;font-size:.76rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none!important;background:rgba(4,15,27,.42);box-shadow:0 0 0 1px rgba(104,173,235,.05) inset,0 12px 40px rgba(0,0,0,.18);transition:background .25s,border-color .25s,transform .25s,box-shadow .25s}.hero-cta span{font-size:1.2rem;color:#e8b274;transition:transform .25s}.hero-cta:hover{background:rgba(229,161,91,.08);border-color:#e7b172!important;transform:translateY(-2px);box-shadow:0 14px 44px rgba(0,0,0,.28),0 0 28px rgba(229,161,91,.06)}.hero-cta:hover span{transform:translateX(4px)}
-.hero-math{position:absolute;inset:0;z-index:1;pointer-events:none;color:rgba(128,177,229,.42);font-family:Georgia,serif;font-style:italic}.hero-math span{position:absolute;text-shadow:0 0 18px rgba(70,143,221,.18)}.hero-math .phi{right:20%;top:15%;font-size:1.15rem}.hero-math .fx{right:5.5%;top:30%;font-size:1.35rem}.hero-math .integral{right:6.2%;top:57%;font-size:2.4rem}.hero-math .sigma{right:11%;top:73%;font-size:1.7rem}
-.hero-scroll{position:absolute;z-index:3;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.55rem;border:0!important;text-decoration:none!important;color:rgba(208,224,239,.55)!important}.hero-scroll>span{display:block;width:22px;height:36px;border:1px solid rgba(181,207,233,.45);border-radius:12px;position:relative}.hero-scroll>span:after{content:"";position:absolute;top:7px;left:50%;width:2px;height:6px;border-radius:2px;background:#83bdf3;transform:translateX(-50%);animation:paiScroll 2s ease-in-out infinite}@keyframes paiScroll{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,11px)}}.hero-scroll small{font-family:"IBM Plex Sans",sans-serif;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase}
-#header{background:#020b16!important;border-top:1px solid rgba(127,176,220,.08)}
-#nav{background:rgba(3,13,24,.94)!important;border-color:rgba(127,176,220,.13)!important;box-shadow:0 16px 55px rgba(0,0,0,.24)}
-#main{background:linear-gradient(180deg,rgba(6,19,34,.97),rgba(7,21,37,.95))!important;border-color:rgba(127,176,220,.11)!important;box-shadow:0 30px 90px rgba(0,0,0,.34)!important}
-#main .post.featured{position:relative;overflow:hidden}#main .post.featured:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 5%,rgba(86,157,224,.055),transparent 30%);pointer-events:none}
-.expertise-grid article{background:linear-gradient(145deg,rgba(255,255,255,.022),rgba(2,11,22,.12))!important;transition:border-color .3s,background .3s}.expertise-grid article:hover{background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(2,11,22,.08))!important}
-.floating-nav-panel{background:rgba(2,11,22,.78)!important;border-color:rgba(119,172,221,.18)!important;box-shadow:0 14px 45px rgba(0,0,0,.35)!important}
-@media screen and (max-width:980px){.hero-math{opacity:.55}.paradigm-hero{background-position:center center!important}.paradigm-hero h1{font-size:clamp(2rem,7vw,3.4rem)!important}}
-@media screen and (max-width:736px){.paradigm-hero{min-height:100svh!important;padding:7rem 1.25rem 6rem!important;background-position:46% center!important}.hero-mark{width:98px!important}.hero-brand{font-size:.8rem;letter-spacing:.28em;margin-bottom:1.7rem}.paradigm-hero h1{font-size:clamp(1.8rem,8.2vw,2.65rem)!important;letter-spacing:.07em!important}.paradigm-hero p{font-size:.84rem!important;line-height:1.7!important}.hero-math{display:none}.hero-scroll{bottom:1.25rem}.hero-cta{font-size:.68rem;letter-spacing:.12em;padding:.9rem 1rem}.paradigm-hero:before{background:rgba(2,11,22,.28)}}
-@media (prefers-reduced-motion:reduce){.hero-atmosphere,.hero-mark,.hero-scroll>span:after{animation:none!important}}
+/* The reference artwork already contains its own complete visual language. */
+.cinematic-hero + #main {
+  margin-top: 0;
+  border-top: 1px solid rgba(178,205,230,.13);
+}
+.cinematic-hero + #main > .post.featured {
+  display: none;
+}
+#expertises { scroll-margin-top: 5rem; }
+
+@media screen and (max-width: 736px) {
+  .cinematic-hero {
+    width: 100%;
+    height: 100svh;
+    min-height: 640px;
+    aspect-ratio: auto;
+    background-image: url("../../images/hero-cinematic.png");
+    background-repeat: no-repeat;
+    background-position: 50% 16%;
+    background-size: auto 100%;
+  }
+  .cinematic-hero-art { opacity: 0; }
+  /* On narrow screens the existing floating menu supplies real navigation. */
+  .cinematic-hit:not(.cinematic-cta):not(.cinematic-scroll) { display:none; }
+  .cinematic-cta { left:29%; top:54%; width:42%; height:7%; }
+  .cinematic-scroll { left:44%; top:66%; width:12%; height:8%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-hero { scroll-behavior:auto; }
+}
+@media screen and (max-width:736px) {
+  body > .floating-nav { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+}

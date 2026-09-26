@@ -27,14 +27,19 @@
   /* Persistent navigation: kept outside #wrapper so position:fixed is viewport-based. */
   var primaryNav=document.getElementById('nav');
   var floating=document.querySelector('.floating-nav');
-  if(primaryNav && floating){
+  if(floating){
     var toggle=floating.querySelector('.floating-nav-toggle');
     var navThreshold=0;
 
     function updateThreshold(){
       /* Absolute document position of the bottom of the primary navigation. */
-      var rect=primaryNav.getBoundingClientRect();
-      navThreshold=window.scrollY+rect.bottom;
+      if(primaryNav){
+        var rect=primaryNav.getBoundingClientRect();
+        navThreshold=window.scrollY+rect.bottom;
+      }else{
+        var hero=document.querySelector('.cinematic-hero');
+        navThreshold=hero ? hero.offsetTop+hero.offsetHeight : 80;
+      }
     }
 
     function closeFloating(){
