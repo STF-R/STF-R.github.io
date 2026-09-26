@@ -8,8 +8,7 @@ body.is-preload, body { background-color:#071426 !important; }
   background-size:cover !important; background-position:center center !important; background-repeat:no-repeat !important;
   background-attachment:fixed !important; opacity:1; transition:opacity .35s ease;
 }
-#data-flow { position:fixed; inset:0; width:100vw; height:100vh; pointer-events:none; z-index:0; opacity:.82; mix-blend-mode:screen; }
-#wrapper > *:not(.bg):not(#data-flow) { position:relative; z-index:1; }
+#wrapper > *:not(.bg) { position:relative; z-index:1; }
 #intro { min-height:100vh; padding-top:5rem; }
 #intro h1 { font-family:"IBM Plex Sans","Inter","Segoe UI",Arial,sans-serif; font-weight:600; letter-spacing:.055em; text-transform:uppercase; text-shadow:0 2px 28px rgba(0,0,0,.55); margin-bottom:.75rem; }
 #intro p { font-style:normal; letter-spacing:.09em; text-transform:uppercase; font-size:.82rem; color:rgba(239,245,252,.86); }
@@ -56,8 +55,8 @@ body.is-preload, body { background-color:#071426 !important; }
 #footer > section + section { border-left-color:rgba(178,205,230,.12); }
 .form-status { min-height:1.5rem; margin:1rem 0 0; font-size:.9rem; }.form-status.success{color:#8fd5b2}.form-status.error{color:#f1a3a3}
 @media screen and (max-width:980px){.tech-grid{grid-template-columns:repeat(3,1fr)}.value-grid{grid-template-columns:1fr}}
-@media screen and (max-width:736px){#wrapper > .bg{background-attachment:scroll!important;background-position:center center!important}.tech-grid{grid-template-columns:repeat(2,1fr)}.expertise-grid .image img{height:210px}#data-flow{opacity:.56}.paradigm-mark{width:105px}#intro h1{letter-spacing:.035em}}
-@media (prefers-reduced-motion:reduce){#data-flow{display:none}.tech{transition:none}.paradigm-mark{animation:none}}
+@media screen and (max-width:736px){#wrapper > .bg{background-attachment:scroll!important;background-position:center center!important}.tech-grid{grid-template-columns:repeat(2,1fr)}.expertise-grid .image img{height:210px}.paradigm-mark{width:105px}#intro h1{letter-spacing:.035em}}
+@media (prefers-reduced-motion:reduce){.tech{transition:none}.paradigm-mark{animation:none}}
 
 /* 2026-09 UX pass: persistent navigation, media consistency and brand polish */
 .brand-visual {
@@ -215,10 +214,7 @@ body.home-cinematic #wrapper > .bg {
   background: #06111f !important;
   background-image: none !important;
 }
-body.home-cinematic #data-flow {
-  display: none !important;
-}
-body.home-cinematic .cinematic-hero {
+body.home-cinematic body.home-cinematic .cinematic-hero {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -262,8 +258,7 @@ body.home-cinematic .cinematic-hero + #main {
 /* 2026-09 — unified Paradigm corporate design system */
 body.paradigm-corporate{background:#030b15;color:#c7d4e2;font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif}
 body.paradigm-corporate #wrapper{background:#030b15!important;overflow:hidden}
-body.paradigm-corporate #wrapper>.bg,body.paradigm-corporate #data-flow{display:none!important}
-body.paradigm-corporate .floating-nav{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+body.paradigm-corporate #wrapper>.bg,body.paradigm-corporate body.paradigm-corporate .floating-nav{opacity:1;visibility:visible;transform:none;pointer-events:auto}
 body.paradigm-corporate .floating-nav-panel{background:rgba(3,11,21,.72);border-color:rgba(137,185,230,.16);box-shadow:0 12px 40px rgba(0,0,0,.18)}
 .corp-main{position:relative;z-index:2;width:100%;max-width:none;margin:0;background:radial-gradient(circle at 82% 8%,rgba(24,88,145,.09),transparent 28%),#030b15}
 .corp-main:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(108,164,218,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(108,164,218,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,black,transparent 72%)}
@@ -1737,5 +1732,24 @@ body.paradigm-corporate .floating-nav-panel a[aria-current="page"]{
   .cover-discover-arrow::after {
     width: 12px !important;
     height: 12px !important;
+  }
+}
+
+
+/* V27 — targeted hero composition balance.
+   Move only the V21/V26 hero artwork slightly lower; the DÉCOUVRIR cue stays independently anchored. */
+body.home-cinematic .cinematic-hero-art {
+  transform: translateY(clamp(22px, 3.2vh, 42px)) !important;
+}
+
+/* Compact viewports need less optical displacement to preserve breathing room below. */
+@media (max-height: 760px) and (min-width: 737px) {
+  body.home-cinematic .cinematic-hero-art {
+    transform: translateY(clamp(12px, 2vh, 20px)) !important;
+  }
+}
+@media (max-width: 736px) {
+  body.home-cinematic .cinematic-hero-art {
+    transform: translateY(clamp(10px, 2vh, 18px)) !important;
   }
 }
