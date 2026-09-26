@@ -55,13 +55,13 @@
     <section id="contact">
       <form id="contact-form-home" class="contact-form" method="post" action="https://formspree.io/f/xoevnzzw">
         <div class="fields">
-          <div class="field"><label for="name">Nom</label><input type="text" name="name" id="name" autocomplete="name" data-fs-field required /></div>
-          <div class="field"><label for="email">Email</label><input type="email" name="email" id="email" autocomplete="email" data-fs-field required /></div>
-          <div class="field"><label for="message">Message</label><textarea name="message" id="message" rows="4" data-fs-field required></textarea></div>
+          <div class="field"><label for="name">Nom</label><input type="text" name="name" id="name" autocomplete="name" required /></div>
+          <div class="field"><label for="email">Email</label><input type="email" name="email" id="email" autocomplete="email" required /></div>
+          <div class="field"><label for="message">Message</label><textarea name="message" id="message" rows="4" required></textarea></div>
         </div>
         <input type="hidden" name="_subject" value="Nouveau message depuis paradigm-ai.fr" />
-        <ul class="actions"><li><input type="submit" value="Envoyer" data-fs-submit-btn /></li></ul>
-        <p class="form-status" data-fs-success role="status" aria-live="polite"></p><p class="form-status error" data-fs-error role="alert"></p>
+        <ul class="actions"><li><input type="submit" value="Envoyer" /></li></ul>
+        <p class="form-status" role="status" aria-live="polite"></p><p class="form-status error" role="alert"></p>
       </form>
     </section>
     <section class="split contact">
@@ -69,7 +69,11 @@
       <section><h3>Email</h3><p><a href="mailto:sr@paradigm-ai.fr">sr@paradigm-ai.fr</a></p></section>
     </section>
   </footer>
-  <div id="copyright"><ul><li>&copy; Paradigm AI</li><li>Data & Intelligence artificielle</li></ul></div>
+  <div class="floating-nav" aria-label="Navigation rapide">
+  <button class="floating-nav-toggle" type="button" aria-expanded="false" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  <nav class="floating-nav-panel"><a href="index.html">Expertises</a><a href="thisisparadigmai.html">À propos</a><a href="index.html#contact">Contact</a></nav>
 </div>
-<script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrollex.min.js"></script><script src="assets/js/jquery.scrolly.min.js"></script><script src="assets/js/browser.min.js"></script><script src="assets/js/breakpoints.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script><script>window.formspree=window.formspree||function(){(formspree.q=formspree.q||[]).push(arguments);};formspree('initForm',{formElement:'#contact-form-home',formId:'xoevnzzw'});</script><script src="https://unpkg.com/@formspree/ajax@1" defer></script><script src="assets/js/custom.js"></script>
+<div id="copyright"><ul><li>&copy; Paradigm AI</li><li>Data & Intelligence artificielle</li></ul></div>
+</div>
+<script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrollex.min.js"></script><script src="assets/js/jquery.scrolly.min.js"></script><script src="assets/js/browser.min.js"></script><script src="assets/js/breakpoints.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script><script src="assets/js/custom.js"></script>
 </body></html>
