@@ -857,3 +857,312 @@ body.paradigm-corporate .tech-grid .tech span{
 @media(max-width:700px){body.paradigm-corporate .tech-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}body.paradigm-corporate .tech-grid .tech{min-height:6.6rem;padding:1.05rem}}
 @media(max-width:380px){body.paradigm-corporate .tech-grid{grid-template-columns:1fr}}
 @media(hover:none){body.paradigm-corporate .tech-grid .tech:hover{transform:none}}
+
+/* 2026-09 — V13 stable panel geometry + softer corporate contrast */
+:root{
+  --corp-panel-max:1720px;
+  --corp-panel-gutter:clamp(1.5rem,4vw,6rem);
+  --title-primary:#dce6ef;
+  --title-secondary:#d4e0e9;
+  --title-tertiary:#cbd9e5;
+}
+/* Stable architectural panel: fluid gutters, then a hard max-width. */
+body.paradigm-corporate.home-cinematic .corp-main,
+body.paradigm-corporate.home-cinematic .corp-footer{
+  width:min(calc(100% - (2 * var(--corp-panel-gutter))),var(--corp-panel-max));
+}
+/* Major titles use a cool off-white rather than display-white on navy. */
+body.paradigm-corporate .section-intro h1,
+body.paradigm-corporate .conviction-copy h1,
+body.paradigm-corporate .contact-copy h1,
+body.paradigm-corporate .about-hero h1,
+body.paradigm-corporate:not(.home-cinematic) .narrative-grid h2,
+body.paradigm-corporate:not(.home-cinematic) .ecosystem-section .section-intro h2,
+body.paradigm-corporate:not(.home-cinematic) .contact-copy h2{
+  color:var(--title-primary);
+}
+body.paradigm-corporate .expertise-list h2,
+body.paradigm-corporate .approach-flow h3,
+body.paradigm-corporate .tech-grid .tech strong{
+  color:var(--title-secondary);
+}
+body.paradigm-corporate .corp-link,
+body.paradigm-corporate .corp-button{
+  color:var(--title-tertiary)!important;
+}
+@media(min-width:2200px){
+  :root{--corp-panel-max:1840px;--corp-panel-gutter:clamp(5rem,6vw,9rem)}
+}
+@media(max-width:900px){
+  :root{--corp-panel-gutter:1rem}
+}
+@media(max-width:600px){
+  :root{--corp-panel-gutter:0rem}
+}
+
+/* 2026-09 — V14 executive design audit: dimensions, typography and contact UX */
+:root{
+  --type-body:clamp(1.02rem,.99rem + .12vw,1.10rem);
+  --type-support:clamp(.96rem,.94rem + .08vw,1.01rem);
+  --type-small:.90rem;
+  --type-label:.82rem;
+  --type-h3:clamp(1.22rem,1.15rem + .25vw,1.42rem);
+  --type-h2:clamp(1.72rem,1.52rem + .65vw,2.25rem);
+  --type-h1:clamp(2.30rem,1.98rem + 1.35vw,3.35rem);
+  --type-display:clamp(2.75rem,2.25rem + 1.9vw,4.15rem);
+  --leading-body:1.68;
+  --corp-section-y:clamp(6.75rem,7.5vw,9rem);
+}
+/* Nothing that carries meaning should feel like micro-copy. */
+body.paradigm-corporate .section-kicker,
+body.paradigm-corporate .eyebrow,
+body.paradigm-corporate .expertise-no,
+body.paradigm-corporate .approach-flow span,
+body.paradigm-corporate .principles strong,
+body.paradigm-corporate .corp-form label{
+  font-size:var(--type-label);
+}
+body.paradigm-corporate .expertise-list article>p,
+body.paradigm-corporate .approach-flow p,
+body.paradigm-corporate .principles span{
+  font-size:var(--type-support);
+}
+body.paradigm-corporate .tech-grid .tech span{
+  color:#8da3b7;
+  font-size:.88rem;
+  line-height:1.45;
+  letter-spacing:.025em;
+}
+body.paradigm-corporate .corp-link,
+body.paradigm-corporate .corp-button{font-size:.84rem}
+body.paradigm-corporate .floating-nav-panel a{font-size:.80rem}
+body.paradigm-corporate .corp-footer{font-size:.80rem}
+
+/* Executive spacing rhythm: fewer arbitrary gaps, stronger alignment. */
+body.paradigm-corporate .corp-section{padding-top:var(--corp-section-y);padding-bottom:var(--corp-section-y)}
+body.paradigm-corporate .section-intro{gap:clamp(3rem,5vw,6rem);margin-bottom:clamp(3.5rem,5vw,5rem)}
+body.paradigm-corporate .conviction-section{gap:clamp(4rem,7vw,8rem)}
+body.paradigm-corporate .contact-section{gap:clamp(4rem,7vw,7rem);padding-top:var(--corp-section-y);padding-bottom:var(--corp-section-y)}
+body.paradigm-corporate .approach-flow{margin-top:clamp(3.25rem,4.5vw,4.5rem)}
+body.paradigm-corporate .approach-flow>div{min-height:15rem;padding-top:2.15rem;padding-bottom:1.5rem}
+body.paradigm-corporate .expertise-list article{padding-top:2.4rem;padding-bottom:2.4rem}
+body.paradigm-corporate .tech-grid{margin-top:clamp(3rem,4vw,4rem);gap:1rem}
+body.paradigm-corporate .tech-grid .tech{min-height:7.6rem;padding:1.4rem 1.45rem}
+
+/* Contact becomes a deliberate conversion surface, not a utility form. */
+body.paradigm-corporate .contact-copy{padding-top:.35rem}
+body.paradigm-corporate .contact-copy h1,
+body.paradigm-corporate:not(.home-cinematic) .contact-copy h2{margin-bottom:1.5rem}
+body.paradigm-corporate .contact-meta{margin-top:2.4rem!important}
+body.paradigm-corporate .corp-form{
+  position:relative;
+  padding:clamp(2rem,3.2vw,3rem);
+  border:1px solid rgba(151,198,238,.16);
+  border-radius:4px;
+  background:linear-gradient(145deg,rgba(13,29,47,.76),rgba(4,14,27,.68));
+  box-shadow:0 24px 70px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025);
+}
+body.paradigm-corporate .corp-form:before{
+  content:"";position:absolute;left:-1px;top:2.1rem;width:2px;height:3.2rem;
+  background:linear-gradient(#72bdf8,#dfa15f);opacity:.75;
+}
+body.paradigm-corporate .corp-form .fields{gap:1.45rem 1.25rem}
+body.paradigm-corporate .corp-form label{
+  margin:0 0 .7rem;color:#a9bac9;font-weight:500;letter-spacing:.08em;text-transform:none;
+}
+body.paradigm-corporate .corp-form input[type=text],
+body.paradigm-corporate .corp-form input[type=email],
+body.paradigm-corporate .corp-form textarea{
+  min-height:3.35rem;padding:.9rem 1rem;
+  border:1px solid rgba(151,198,238,.20);border-radius:3px;
+  background:rgba(1,8,17,.48);color:#e5edf4;
+  font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;font-size:1rem;line-height:1.5;
+}
+body.paradigm-corporate .corp-form textarea{min-height:10.5rem;padding-top:1rem}
+body.paradigm-corporate .corp-form input:hover,
+body.paradigm-corporate .corp-form textarea:hover{border-color:rgba(151,198,238,.32)}
+body.paradigm-corporate .corp-form input:focus,
+body.paradigm-corporate .corp-form textarea:focus{
+  border-color:rgba(109,185,246,.72);background:rgba(4,17,31,.72);box-shadow:0 0 0 3px rgba(109,185,246,.08)
+}
+body.paradigm-corporate .corp-form .corp-button{
+  width:100%;min-height:3.35rem;margin-top:1.5rem;padding:.9rem 1.15rem;
+  border-color:rgba(225,160,94,.42);background:rgba(225,160,94,.035);
+  justify-content:center;gap:.9rem;
+}
+body.paradigm-corporate .corp-form .corp-button:hover{background:rgba(225,160,94,.075);border-color:rgba(225,160,94,.62)}
+body.paradigm-corporate .corp-form .form-status{font-size:.92rem}
+
+@media(max-width:900px){
+  :root{--corp-section-y:6rem}
+  body.paradigm-corporate .approach-flow>div{min-height:0}
+  body.paradigm-corporate .contact-section{gap:3.5rem}
+}
+@media(max-width:600px){
+  :root{--type-label:.80rem;--type-small:.88rem;--corp-section-y:4.75rem}
+  body.paradigm-corporate .corp-section{padding-left:1.35rem;padding-right:1.35rem}
+  body.paradigm-corporate .corp-form{padding:1.4rem 1.2rem}
+  body.paradigm-corporate .corp-form:before{top:1.5rem}
+  body.paradigm-corporate .tech-grid .tech span{font-size:.84rem}
+  body.paradigm-corporate .corp-footer{font-size:.76rem}
+}
+
+/* 2026-09 — V15 ultimate executive polish: type, rhythm, interaction, accessibility */
+:root{
+  --ink-1:#dce6ef;
+  --ink-2:#b7c6d3;
+  --ink-3:#8fa3b6;
+  --line-soft:rgba(151,198,238,.13);
+  --line-mid:rgba(151,198,238,.21);
+  --accent-blue:#79bdf3;
+  --accent-warm:#d9a064;
+  --content-max:1480px;
+  --measure:68ch;
+}
+html{scroll-behavior:smooth}
+body.paradigm-corporate{
+  font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  font-kerning:normal;
+}
+body.paradigm-corporate .corp-main{overflow:hidden}
+body.paradigm-corporate .corp-section{
+  scroll-margin-top:5.5rem;
+  max-width:var(--content-max);
+  margin-inline:auto;
+  padding-inline:clamp(2rem,4.4vw,5.25rem);
+}
+body.paradigm-corporate .section-kicker{
+  margin-bottom:1.55rem;
+  color:#79bdf3;
+  font-size:.84rem;
+  line-height:1.3;
+  font-weight:550;
+  letter-spacing:.15em;
+}
+body.paradigm-corporate .section-intro h1,
+body.paradigm-corporate .conviction-copy h1,
+body.paradigm-corporate .contact-copy h1{
+  max-width:18ch;
+  font-size:clamp(2.35rem,2.05rem + 1.05vw,3.35rem);
+  line-height:1.08;
+  letter-spacing:-.028em;
+  font-weight:430;
+  text-wrap:balance;
+}
+body.paradigm-corporate .section-intro>p,
+body.paradigm-corporate .conviction-copy>p,
+body.paradigm-corporate .contact-copy>p{
+  max-width:var(--measure);
+  color:#a7b7c6;
+  font-size:clamp(1.03rem,1rem + .08vw,1.09rem);
+  line-height:1.72;
+}
+body.paradigm-corporate .section-intro>p{max-width:54ch}
+body.paradigm-corporate .expertise-list article{
+  grid-template-columns:3.2rem minmax(15rem,.72fr) minmax(20rem,1.28fr);
+  column-gap:clamp(1.5rem,3vw,4.25rem);
+  align-items:start;
+  border-color:var(--line-soft);
+}
+body.paradigm-corporate .expertise-list h2{
+  font-size:clamp(1.22rem,1.17rem + .18vw,1.42rem);
+  line-height:1.32;
+  text-wrap:balance;
+}
+body.paradigm-corporate .expertise-list article>p{
+  max-width:64ch;
+  color:#9eafbf;
+  font-size:1rem;
+  line-height:1.72;
+}
+body.paradigm-corporate .eyebrow,
+body.paradigm-corporate .expertise-no,
+body.paradigm-corporate .approach-flow span,
+body.paradigm-corporate .principles strong{
+  font-size:.83rem;
+}
+body.paradigm-corporate .approach-flow>div{padding-inline:clamp(1.2rem,2vw,2rem)}
+body.paradigm-corporate .approach-flow h3{margin-top:1.85rem}
+body.paradigm-corporate .approach-flow p{color:#9eafbf;font-size:1rem;line-height:1.68}
+body.paradigm-corporate .principles span{color:#a7b7c6;font-size:1rem}
+body.paradigm-corporate .tech-grid{gap:1rem}
+body.paradigm-corporate .tech-grid .tech{
+  min-height:7.8rem;
+  padding:1.45rem 1.5rem;
+  border-color:var(--line-soft);
+  background:linear-gradient(145deg,rgba(13,29,47,.58),rgba(4,15,28,.45));
+}
+body.paradigm-corporate .tech-grid .tech strong{font-size:1.08rem;font-weight:500}
+body.paradigm-corporate .tech-grid .tech span{font-size:.91rem;color:#91a6b8}
+body.paradigm-corporate .contact-section{align-items:start}
+body.paradigm-corporate .contact-copy{max-width:35rem}
+body.paradigm-corporate .contact-meta{color:#8fa3b6!important;font-size:1rem!important}
+body.paradigm-corporate .corp-form{
+  max-width:46rem;
+  justify-self:end;
+  width:100%;
+  border-color:var(--line-mid);
+  background:linear-gradient(145deg,rgba(13,29,47,.82),rgba(4,14,27,.76));
+  box-shadow:0 28px 80px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.025);
+}
+body.paradigm-corporate .corp-form label{font-size:.86rem;color:#b0bfcc;letter-spacing:.055em}
+body.paradigm-corporate .corp-form input[type=text],
+body.paradigm-corporate .corp-form input[type=email],
+body.paradigm-corporate .corp-form textarea{
+  font-size:1rem;
+  border-color:rgba(151,198,238,.23);
+}
+body.paradigm-corporate .corp-form input::placeholder,
+body.paradigm-corporate .corp-form textarea::placeholder{color:#657b8f;opacity:1}
+body.paradigm-corporate .corp-form .corp-button{
+  min-height:3.55rem;
+  font-size:.88rem;
+  font-weight:550;
+  letter-spacing:.085em;
+}
+body.paradigm-corporate .floating-nav-panel{border-color:rgba(178,205,230,.16);background:rgba(5,16,30,.86)}
+body.paradigm-corporate .floating-nav-panel a{font-size:.82rem;font-weight:550;letter-spacing:.06em;color:#cbd7e1}
+body.paradigm-corporate .floating-nav-panel a[aria-current="true"]{color:#edf3f8!important;background:rgba(121,189,243,.09)}
+body.paradigm-corporate .corp-footer{
+  width:min(calc(100% - (2 * var(--corp-panel-gutter))),var(--corp-panel-max));
+  max-width:none;
+  box-sizing:border-box;
+  padding-inline:clamp(2rem,4.4vw,5.25rem);
+  color:#6f8497;
+  font-size:.82rem;
+  letter-spacing:.065em;
+}
+body.paradigm-corporate a:focus-visible,
+body.paradigm-corporate button:focus-visible,
+body.paradigm-corporate input:focus-visible,
+body.paradigm-corporate textarea:focus-visible{
+  outline:2px solid rgba(121,189,243,.82);
+  outline-offset:3px;
+}
+body.paradigm-corporate .corp-link{font-size:.87rem;letter-spacing:.075em}
+
+@media(max-width:1100px){
+  body.paradigm-corporate .expertise-list article{grid-template-columns:2.8rem minmax(13rem,.8fr) minmax(17rem,1.2fr);column-gap:2rem}
+}
+@media(max-width:900px){
+  body.paradigm-corporate .corp-section{padding-inline:clamp(1.5rem,5vw,3rem)}
+  body.paradigm-corporate .expertise-list article{grid-template-columns:2.6rem 1fr;row-gap:.8rem}
+  body.paradigm-corporate .expertise-list article>p{grid-column:2;max-width:60ch}
+  body.paradigm-corporate .corp-form{justify-self:stretch;max-width:none}
+}
+@media(max-width:600px){
+  body.paradigm-corporate{font-size:16px}
+  body.paradigm-corporate .corp-section{padding-inline:1.35rem}
+  body.paradigm-corporate .section-kicker{font-size:.80rem;margin-bottom:1.25rem}
+  body.paradigm-corporate .section-intro h1,
+  body.paradigm-corporate .conviction-copy h1,
+  body.paradigm-corporate .contact-copy h1{font-size:clamp(2.05rem,9vw,2.65rem);line-height:1.1}
+  body.paradigm-corporate .expertise-list article{grid-template-columns:2.25rem 1fr;column-gap:.8rem}
+  body.paradigm-corporate .expertise-list article>p{grid-column:2;font-size:.98rem}
+  body.paradigm-corporate .tech-grid .tech{min-height:6.9rem;padding:1.15rem}
+  body.paradigm-corporate .tech-grid .tech span{font-size:.88rem}
+  body.paradigm-corporate .corp-footer{padding-inline:1.35rem;font-size:.78rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body.paradigm-corporate *{scroll-behavior:auto!important}}

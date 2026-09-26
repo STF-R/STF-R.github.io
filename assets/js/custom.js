@@ -96,3 +96,22 @@
     });
   });
 })();
+
+/* V15 — active section state for the persistent navigation. */
+(function(){
+  'use strict';
+  if(!('IntersectionObserver' in window)) return;
+  var links=Array.prototype.slice.call(document.querySelectorAll('.floating-nav-panel a[href^="#"]'));
+  if(!links.length) return;
+  var map={};
+  links.forEach(function(link){var id=link.getAttribute('href').slice(1);if(id)map[id]=link;});
+  var sections=Object.keys(map).map(function(id){return document.getElementById(id);}).filter(Boolean);
+  var observer=new IntersectionObserver(function(entries){
+    var visible=entries.filter(function(e){return e.isIntersecting;}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio;});
+    if(!visible.length)return;
+    links.forEach(function(link){link.removeAttribute('aria-current');});
+    var active=map[visible[0].target.id];
+    if(active)active.setAttribute('aria-current','true');
+  },{rootMargin:'-18% 0px -62% 0px',threshold:[0,.15,.35,.6]});
+  sections.forEach(function(section){observer.observe(section);});
+})();
