@@ -4,7 +4,7 @@ body.is-preload, body { background-color:#071426 !important; }
 #wrapper { background:#071426; }
 #wrapper > .bg {
   background-color:#071426 !important;
-  background-image:linear-gradient(180deg,rgba(4,14,30,.18),rgba(4,14,30,.38)),url("../../images/bg-dynamic.png") !important;
+  background-image:linear-gradient(180deg,rgba(4,14,30,.18),rgba(4,14,30,.38)),url("../../images/bg-dynamic.jpg") !important;
   background-size:cover !important; background-position:center center !important; background-repeat:no-repeat !important;
   background-attachment:fixed !important; opacity:1; transition:opacity .35s ease;
 }
@@ -140,58 +140,4 @@ body > .floating-nav { position: fixed !important; top: 18px; right: 22px; left:
 	height: auto;
 	margin: 0;
 	border-radius: 9px;
-}
-
-/* Cinematic background — restrained two-plane motion */
-#wrapper > .bg {
-  overflow:hidden;
-  background-image:linear-gradient(180deg,rgba(4,14,30,.28),rgba(4,14,30,.52)),url("../../images/bg-dynamic.png") !important;
-}
-#wrapper > .bg:before,
-#wrapper > .bg:after {
-  content:"";
-  position:absolute;
-  inset:-9%;
-  pointer-events:none;
-  background-image:url("../../images/bg-dynamic.png");
-  background-repeat:no-repeat;
-  background-position:center center;
-  background-size:cover;
-  will-change:transform,opacity;
-}
-#wrapper > .bg:before {
-  opacity:.25;
-  filter:blur(.35px) brightness(.78) saturate(.92);
-  mix-blend-mode:screen;
-  -webkit-mask-image:linear-gradient(105deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.32) 35%,transparent 58%);
-  mask-image:linear-gradient(105deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.32) 35%,transparent 58%);
-  animation:paradigm-plane-a 42s ease-in-out infinite alternate;
-}
-#wrapper > .bg:after {
-  opacity:.18;
-  filter:blur(.7px) brightness(.82) saturate(.88);
-  mix-blend-mode:screen;
-  -webkit-mask-image:linear-gradient(285deg,rgba(0,0,0,.76) 0%,rgba(0,0,0,.28) 34%,transparent 57%);
-  mask-image:linear-gradient(285deg,rgba(0,0,0,.76) 0%,rgba(0,0,0,.28) 34%,transparent 57%);
-  animation:paradigm-plane-b 55s ease-in-out infinite alternate;
-}
-@keyframes paradigm-plane-a {
-  0%{transform:translate3d(-2.8%,-.7%,0) scale(1.055) rotate(-.18deg)}
-  50%{transform:translate3d(.5%,.45%,0) scale(1.075) rotate(.08deg)}
-  100%{transform:translate3d(3.1%,-.25%,0) scale(1.06) rotate(.2deg)}
-}
-@keyframes paradigm-plane-b {
-  0%{transform:translate3d(2.6%,.55%,0) scale(1.08) rotate(.16deg)}
-  50%{transform:translate3d(-.35%,-.4%,0) scale(1.095) rotate(-.06deg)}
-  100%{transform:translate3d(-2.7%,.2%,0) scale(1.075) rotate(-.17deg)}
-}
-/* The canvas is only a faint light finish; the photograph carries the motion. */
-#data-flow{opacity:.28;mix-blend-mode:screen}
-@media screen and (max-width:736px){
-  #wrapper > .bg:before{opacity:.15;animation-duration:55s}
-  #wrapper > .bg:after{opacity:.10;animation-duration:70s}
-  #data-flow{opacity:.18}
-}
-@media (prefers-reduced-motion:reduce){
-  #wrapper > .bg:before,#wrapper > .bg:after{animation:none!important;transform:none!important}
 }
