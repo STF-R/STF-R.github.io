@@ -1690,3 +1690,52 @@ body.paradigm-corporate .floating-nav-panel a[aria-current="page"]{
   .cover-discover-arrow::before { height:34px; }
 }
 @media (prefers-reduced-motion:reduce) { .cover-discover { transition:none!important; } }
+
+
+/* V26 — ONLY the existing DÉCOUVRIR cue + arrow sizing is adjusted. */
+.cover-discover {
+  width: 150px !important;
+  height: 126px !important;
+}
+.cover-discover-label {
+  font-size: 14px !important;
+  letter-spacing: .20em !important;
+}
+.cover-discover-arrow {
+  width: 28px !important;
+  height: 72px !important;
+  margin-top: 16px !important;
+}
+.cover-discover-arrow::before {
+  width: 2px !important;
+  height: 58px !important;
+}
+.cover-discover-arrow::after {
+  bottom: 2px !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-right-width: 2px !important;
+  border-bottom-width: 2px !important;
+}
+@media (max-width:736px) {
+  .cover-discover {
+    width: 136px !important;
+    height: 110px !important;
+  }
+  .cover-discover-label {
+    font-size: 12px !important;
+    letter-spacing: .18em !important;
+  }
+  .cover-discover-arrow {
+    width: 24px !important;
+    height: 61px !important;
+    margin-top: 14px !important;
+  }
+  .cover-discover-arrow::before {
+    height: 49px !important;
+  }
+  .cover-discover-arrow::after {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
