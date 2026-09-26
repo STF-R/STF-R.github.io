@@ -20,10 +20,7 @@
 <div id="wrapper">
   <section class="cinematic-hero legacy-hero" aria-label="Paradigm AI — Data, Intelligence Artificielle et Systèmes Agentiques">
     <img class="cinematic-hero-art" src="images/hero-cinematic.png" alt="" fetchpriority="high" />
-    <a class="legacy-scroll scrolly cover-discover" href="#paradigm" aria-label="Découvrir Paradigm AI">
-      <span class="cover-discover-label">Découvrir</span>
-      <span class="sr-only">Paradigm AI</span>
-    </a>
+    <a class="legacy-scroll scrolly" href="#paradigm" aria-label="Découvrir Paradigm AI"><span class="legacy-scroll-label" aria-hidden="true">Découvrir</span></a>
   </section>
 
   <main class="corp-main">
@@ -76,15 +73,4 @@
   <footer class="corp-footer"><span>© Paradigm AI</span><span>Data · Intelligence Artificielle · Ingénierie</span></footer>
 </div>
 <script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrolly.min.js"></script><script src="assets/js/custom.js"></script>
-
-<script>
-(function () {
-  function syncCoverCue() {
-    document.body.classList.toggle('cover-at-top', window.scrollY < 24);
-  }
-  syncCoverCue();
-  window.addEventListener('scroll', syncCoverCue, { passive: true });
-})();
-</script>
-
 </body></html>

@@ -1658,56 +1658,26 @@ body.paradigm-corporate .floating-nav-panel a[aria-current="page"]{
 }
 
 
-/* V22 — Cover entry cue: keep the existing arrow artwork, remove the obsolete hit-nav. */
-.legacy-hit { display: none !important; }
-.cover-discover {
-  left: 46.5% !important;
-  top: 78.2% !important;
-  width: 7% !important;
-  height: 13% !important;
-  display: block !important;
-  border-radius: 0 !important;
-  color: rgba(210, 223, 234, .70);
-  text-align: center;
-  transition: opacity .32s ease, color .25s ease, transform .32s ease;
-}
-.cover-discover-label {
+/* Targeted cover cleanup — preserve V21 arrow position/behavior, add label only. */
+.legacy-scroll-label {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: -1.45rem;
   transform: translateX(-50%);
   white-space: nowrap;
+  color: rgba(220, 230, 239, .78);
   font-family: "IBM Plex Sans", Arial, sans-serif;
-  font-size: clamp(11px, .66vw, 13px);
+  font-size: 12px;
   line-height: 1;
   font-weight: 500;
   letter-spacing: .18em;
   text-transform: uppercase;
-  text-shadow: 0 1px 12px rgba(0, 8, 20, .45);
-}
-@media (hover:hover) and (pointer:fine) {
-  .cover-discover:hover {
-    color: rgba(231, 239, 245, .94);
-    transform: translateY(3px);
-  }
-}
-body:not(.cover-at-top) .cover-discover {
-  opacity: 0;
   pointer-events: none;
-  transform: translateY(7px);
 }
 @media (max-width:736px) {
-  .cover-discover {
-    left: 40% !important;
-    top: 78% !important;
-    width: 20% !important;
-    height: 14% !important;
-  }
-  .cover-discover-label {
+  .legacy-scroll-label {
+    top: -1.25rem;
     font-size: 11px;
     letter-spacing: .16em;
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  .cover-discover { transition: opacity .15s ease, color .15s ease; }
 }
