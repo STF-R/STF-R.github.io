@@ -1533,3 +1533,181 @@ body.paradigm-corporate .floating-nav-panel a[aria-current="page"]{
     transition: none;
   }
 }
+
+
+/* V21 — Robust adaptive layout system
+   Fluid where useful, bounded where necessary. 100% browser zoom is the design reference. */
+:root {
+  --layout-gutter: clamp(18px, 3.8vw, 76px);
+  --panel-max: 1680px;
+  --content-max: 1480px;
+  --section-x: clamp(24px, 4.2vw, 72px);
+  --section-y: clamp(76px, 7.2vw, 124px);
+  --layout-gap: clamp(34px, 4.2vw, 72px);
+  --copy-measure: 66ch;
+}
+
+/* The sliding surface responds to the viewport, but stops growing on large displays. */
+.site-content {
+  width: min(calc(100% - (2 * var(--layout-gutter))), var(--panel-max)) !important;
+  max-width: var(--panel-max) !important;
+  margin-inline: auto !important;
+}
+
+/* Keep editorial content from stretching just because the outer panel can. */
+.site-content > section,
+.site-content > footer,
+.site-content .section-inner {
+  box-sizing: border-box;
+}
+
+.site-content > section {
+  padding-inline: var(--section-x) !important;
+  padding-block: var(--section-y) !important;
+}
+
+.site-content > section > .section-inner,
+.site-content > section > .inner,
+.site-content > section > .content-inner {
+  width: min(100%, var(--content-max));
+  margin-inline: auto;
+}
+
+/* Stable reading measure. Long copy should not track the panel width. */
+.site-content p:not(.tech-card p):not(.eyebrow):not(.section-kicker),
+.site-content .section-copy {
+  max-width: var(--copy-measure);
+}
+
+/* Grids scale by available space, not by browser zoom assumptions. */
+.site-content .section-grid,
+.site-content .split,
+.site-content .contact-layout {
+  column-gap: var(--layout-gap);
+}
+
+/* Large desktop: preserve presence without letting the site become sparse. */
+@media (min-width: 1600px) {
+  :root {
+    --layout-gutter: clamp(56px, 4vw, 88px);
+    --section-x: clamp(52px, 4vw, 76px);
+    --section-y: clamp(96px, 6.5vw, 132px);
+    --layout-gap: clamp(56px, 4vw, 78px);
+  }
+}
+
+/* Normal desktop / laptop: this is the primary composition. */
+@media (min-width: 1100px) and (max-width: 1599px) {
+  :root {
+    --layout-gutter: clamp(30px, 3.25vw, 52px);
+    --section-x: clamp(34px, 3.6vw, 56px);
+    --section-y: clamp(78px, 6.5vw, 104px);
+    --layout-gap: clamp(38px, 4vw, 60px);
+  }
+}
+
+/* Tablet / compact laptop: use the available width rather than shrinking the content. */
+@media (min-width: 737px) and (max-width: 1099px) {
+  :root {
+    --layout-gutter: clamp(18px, 2.8vw, 30px);
+    --section-x: clamp(24px, 3.8vw, 40px);
+    --section-y: clamp(68px, 7vw, 88px);
+    --layout-gap: clamp(28px, 4vw, 44px);
+  }
+  .site-content {
+    width: calc(100% - (2 * var(--layout-gutter))) !important;
+  }
+}
+
+/* Mobile: the sliding panel becomes the page surface; spacing, not scaling, does the work. */
+@media (max-width: 736px) {
+  :root {
+    --layout-gutter: 0px;
+    --section-x: clamp(20px, 5.5vw, 30px);
+    --section-y: clamp(58px, 13vw, 78px);
+    --layout-gap: 30px;
+    --copy-measure: 100%;
+  }
+  .site-content {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .site-content > section {
+    padding-inline: var(--section-x) !important;
+  }
+}
+
+/* Very narrow screens: retain a safe minimum gutter without miniaturising type. */
+@media (max-width: 390px) {
+  :root {
+    --section-x: 18px;
+    --section-y: 54px;
+  }
+}
+
+/* Wide screens should not inflate type indefinitely; narrow screens should not crush it. */
+.site-content h1,
+.site-content h2,
+.site-content h3,
+.site-content p,
+.site-content input,
+.site-content textarea,
+.site-content button {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+/* V22 — Cover entry cue: keep the existing arrow artwork, remove the obsolete hit-nav. */
+.legacy-hit { display: none !important; }
+.cover-discover {
+  left: 46.5% !important;
+  top: 78.2% !important;
+  width: 7% !important;
+  height: 13% !important;
+  display: block !important;
+  border-radius: 0 !important;
+  color: rgba(210, 223, 234, .70);
+  text-align: center;
+  transition: opacity .32s ease, color .25s ease, transform .32s ease;
+}
+.cover-discover-label {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: clamp(11px, .66vw, 13px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 12px rgba(0, 8, 20, .45);
+}
+@media (hover:hover) and (pointer:fine) {
+  .cover-discover:hover {
+    color: rgba(231, 239, 245, .94);
+    transform: translateY(3px);
+  }
+}
+body:not(.cover-at-top) .cover-discover {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(7px);
+}
+@media (max-width:736px) {
+  .cover-discover {
+    left: 40% !important;
+    top: 78% !important;
+    width: 20% !important;
+    height: 14% !important;
+  }
+  .cover-discover-label {
+    font-size: 11px;
+    letter-spacing: .16em;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover-discover { transition: opacity .15s ease, color .15s ease; }
+}
