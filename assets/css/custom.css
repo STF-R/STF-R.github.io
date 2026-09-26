@@ -621,3 +621,59 @@ body.paradigm-corporate .expertise-list article>p{max-width:46rem}
   body.paradigm-corporate .section-kicker,
   body.paradigm-corporate .eyebrow{letter-spacing:.13em}
 }
+
+/* 2026-09 — V10 framed sliding surface: keep the fixed cover visible at the edges */
+:root{
+  --corp-panel-width:min(92vw,1720px);
+  --corp-panel-edge:rgba(151,198,238,.12);
+}
+body.paradigm-corporate.home-cinematic .corp-main{
+  box-sizing:border-box;
+  width:var(--corp-panel-width);
+  max-width:none;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:100vh !important;
+  margin-top:100svh !important;
+  overflow:hidden;
+  border-left:1px solid var(--corp-panel-edge);
+  border-right:1px solid var(--corp-panel-edge);
+  background:linear-gradient(180deg,rgba(3,12,23,.91) 0%,rgba(3,11,21,.94) 16%,rgba(3,11,21,.925) 84%,rgba(3,11,21,.95) 100%);
+  box-shadow:-34px 0 70px rgba(0,0,0,.16),34px 0 70px rgba(0,0,0,.16),0 -30px 90px rgba(0,0,0,.26);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+/* The content grid is measured against the sliding panel, not the viewport. */
+body.paradigm-corporate.home-cinematic .corp-section{
+  width:min(calc(100% - (2 * var(--corp-gutter))),var(--corp-shell));
+}
+/* Avoid a second inner frame now that the panel itself has deliberate edges. */
+body.paradigm-corporate.home-cinematic .corp-main::after{display:none}
+body.paradigm-corporate.home-cinematic .corp-footer{
+  box-sizing:border-box;
+  width:var(--corp-panel-width);
+  max-width:none;
+  margin-inline:auto;
+  padding-left:var(--corp-gutter);
+  padding-right:var(--corp-gutter);
+  background:rgba(2,9,18,.95);
+  border-left:1px solid var(--corp-panel-edge);
+  border-right:1px solid var(--corp-panel-edge);
+  border-top:1px solid rgba(137,185,230,.10);
+  box-shadow:-34px 0 70px rgba(0,0,0,.14),34px 0 70px rgba(0,0,0,.14);
+}
+@media(min-width:2200px){
+  :root{--corp-panel-width:min(88vw,1840px)}
+}
+@media(max-width:900px){
+  :root{--corp-panel-width:calc(100vw - 2rem)}
+}
+@media(max-width:600px){
+  :root{--corp-panel-width:100%}
+  body.paradigm-corporate.home-cinematic .corp-main,
+  body.paradigm-corporate.home-cinematic .corp-footer{
+    border-left:0;
+    border-right:0;
+    box-shadow:0 -22px 60px rgba(0,0,0,.24);
+  }
+}
