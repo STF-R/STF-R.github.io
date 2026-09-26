@@ -1166,3 +1166,170 @@ body.paradigm-corporate .corp-link{font-size:.87rem;letter-spacing:.075em}
   body.paradigm-corporate .corp-footer{padding-inline:1.35rem;font-size:.78rem}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body.paradigm-corporate *{scroll-behavior:auto!important}}
+
+/* 2026-09 — V16 readability & contact reset: modern editorial best practices */
+:root{
+  --v16-body:clamp(1.0625rem,1.03rem + .10vw,1.125rem);
+  --v16-support:clamp(1rem,.98rem + .06vw,1.0625rem);
+  --v16-label:.875rem;
+  --v16-h3:clamp(1.25rem,1.18rem + .20vw,1.45rem);
+  --v16-h2:clamp(1.75rem,1.58rem + .55vw,2.25rem);
+  --v16-h1:clamp(2.45rem,2.12rem + 1.05vw,3.35rem);
+  --v16-measure:66ch;
+  --corp-panel-max:1680px;
+  --corp-panel-gutter:clamp(2rem,3vw,4.5rem);
+}
+body.paradigm-corporate{
+  font-size:18px;
+  line-height:1.68;
+}
+/* Never full-justify editorial copy: predictable word spacing beats geometric edges. */
+body.paradigm-corporate p,
+body.paradigm-corporate li,
+body.paradigm-corporate dd,
+body.paradigm-corporate blockquote{
+  text-align:left !important;
+  text-justify:auto !important;
+  overflow-wrap:break-word;
+}
+body.paradigm-corporate p{max-width:var(--v16-measure);text-wrap:pretty}
+body.paradigm-corporate .section-kicker,
+body.paradigm-corporate .eyebrow,
+body.paradigm-corporate .expertise-no,
+body.paradigm-corporate .approach-flow span,
+body.paradigm-corporate .principles strong{
+  font-size:var(--v16-label);
+  line-height:1.4;
+}
+body.paradigm-corporate .section-intro h1,
+body.paradigm-corporate .conviction-copy h1,
+body.paradigm-corporate .contact-copy h1{
+  font-size:var(--v16-h1);
+  line-height:1.10;
+  max-width:20ch;
+  text-wrap:balance;
+}
+body.paradigm-corporate .section-intro>p,
+body.paradigm-corporate .conviction-copy>p,
+body.paradigm-corporate .contact-copy>p,
+body.paradigm-corporate .about-hero-copy>p:last-child,
+body.paradigm-corporate .narrative-grid p{
+  font-size:var(--v16-body);
+  line-height:1.70;
+}
+body.paradigm-corporate .expertise-list h2,
+body.paradigm-corporate .approach-flow h3{font-size:var(--v16-h3)}
+body.paradigm-corporate .expertise-list article>p,
+body.paradigm-corporate .approach-flow p,
+body.paradigm-corporate .principles span{
+  font-size:var(--v16-support);
+  line-height:1.68;
+}
+body.paradigm-corporate .tech-grid .tech strong{font-size:1.12rem;line-height:1.35}
+body.paradigm-corporate .tech-grid .tech span{font-size:.96rem;line-height:1.5}
+body.paradigm-corporate .corp-link{font-size:.91rem}
+body.paradigm-corporate .floating-nav-panel a{font-size:.86rem}
+body.paradigm-corporate .corp-footer{font-size:.84rem}
+
+/* Contact: generous conversion surface, not a compressed utility widget. */
+body.paradigm-corporate .contact-section{
+  grid-template-columns:minmax(19rem,.78fr) minmax(32rem,1.22fr);
+  gap:clamp(4rem,6vw,7rem);
+  align-items:start;
+}
+body.paradigm-corporate .contact-copy{max-width:37rem;padding-top:.8rem}
+body.paradigm-corporate .contact-copy>p{font-size:var(--v16-body);line-height:1.7}
+body.paradigm-corporate .contact-meta{font-size:1.02rem!important;line-height:1.75!important}
+body.paradigm-corporate .corp-form{
+  width:100%;
+  max-width:54rem;
+  justify-self:end;
+  box-sizing:border-box;
+  padding:clamp(2rem,3.2vw,3rem);
+  border:1px solid rgba(151,198,238,.20);
+  border-radius:12px;
+  background:linear-gradient(145deg,rgba(14,31,50,.88),rgba(5,16,30,.84));
+  box-shadow:0 30px 90px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.035);
+}
+body.paradigm-corporate .corp-form:before{display:none}
+body.paradigm-corporate .corp-form .fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.75rem 1.5rem;
+  margin:0 0 1.75rem;
+}
+body.paradigm-corporate .corp-form .field{margin:0;min-width:0}
+body.paradigm-corporate .corp-form .field:nth-child(3){grid-column:1/-1}
+body.paradigm-corporate .corp-form label{
+  display:block;
+  margin:0 0 .65rem;
+  color:#c0ccd6;
+  font-size:.92rem;
+  line-height:1.35;
+  font-weight:500;
+  letter-spacing:.02em;
+  text-transform:none;
+}
+body.paradigm-corporate .corp-form input[type=text],
+body.paradigm-corporate .corp-form input[type=email],
+body.paradigm-corporate .corp-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  min-height:4rem;
+  padding:.95rem 1rem;
+  border:1px solid rgba(151,198,238,.24);
+  border-radius:7px;
+  background:rgba(2,11,22,.42);
+  color:#e1eaf1;
+  font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  font-size:1.05rem;
+  line-height:1.5;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018);
+}
+body.paradigm-corporate .corp-form textarea{
+  min-height:13rem;
+  padding-top:1rem;
+  resize:vertical;
+}
+body.paradigm-corporate .corp-form input::placeholder,
+body.paradigm-corporate .corp-form textarea::placeholder{color:#71869a;opacity:1}
+body.paradigm-corporate .corp-form input:hover,
+body.paradigm-corporate .corp-form textarea:hover{border-color:rgba(151,198,238,.38)}
+body.paradigm-corporate .corp-form input:focus,
+body.paradigm-corporate .corp-form textarea:focus{
+  border-color:rgba(121,189,243,.75);
+  background:rgba(4,16,30,.68);
+  box-shadow:0 0 0 3px rgba(121,189,243,.09);
+  outline:none;
+}
+body.paradigm-corporate .corp-form .corp-button{
+  width:100%;
+  min-height:4rem;
+  margin:0;
+  padding:1rem 1.4rem;
+  border-radius:7px;
+  font-size:.94rem;
+  letter-spacing:.06em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.75rem;
+}
+body.paradigm-corporate .corp-form .corp-button span{margin-left:0}
+body.paradigm-corporate .corp-form .form-status{font-size:.95rem;line-height:1.55}
+
+@media(max-width:1000px){
+  body.paradigm-corporate .contact-section{grid-template-columns:1fr;gap:3rem}
+  body.paradigm-corporate .contact-copy{max-width:42rem}
+  body.paradigm-corporate .corp-form{max-width:none;justify-self:stretch}
+}
+@media(max-width:700px){
+  :root{--corp-panel-gutter:0rem}
+  body.paradigm-corporate{font-size:17px}
+  body.paradigm-corporate .corp-form{padding:1.5rem 1.25rem;border-radius:8px}
+  body.paradigm-corporate .corp-form .fields{grid-template-columns:1fr;gap:1.35rem}
+  body.paradigm-corporate .corp-form .field:nth-child(3){grid-column:auto}
+  body.paradigm-corporate .corp-form input[type=text],
+  body.paradigm-corporate .corp-form input[type=email]{min-height:3.75rem}
+  body.paradigm-corporate .corp-form textarea{min-height:11rem}
+}
