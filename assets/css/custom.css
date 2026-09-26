@@ -463,3 +463,55 @@ body.paradigm-corporate .corp-main::after {
   body.paradigm-corporate .corp-section {padding:var(--corp-section-y) 0}
   body.paradigm-corporate .corp-footer {padding:2rem 0 3rem}
 }
+
+/* 2026-09 — V7 return to the deployed legacy cover, with the corporate site sliding over it */
+body.paradigm-corporate.home-cinematic::before {
+  background-image:url("../../images/hero-cinematic.png");
+  background-size:cover;
+  background-position:center center;
+  filter:brightness(.78) saturate(.82);
+  transform:none;
+}
+body.paradigm-corporate.home-cinematic::after {
+  background:linear-gradient(180deg,rgba(1,7,15,.06) 0%,rgba(1,7,15,.12) 72%,rgba(1,7,15,.32) 100%);
+}
+body.home-cinematic .cinematic-hero {
+  position:relative;
+  width:100vw;
+  height:100vh;
+  height:100svh;
+  margin:0;
+  overflow:hidden;
+  background:#020914;
+}
+body.home-cinematic .cinematic-hero-art {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  opacity:1;
+  filter:none;
+}
+body.paradigm-corporate .corp-main {
+  margin-top:0;
+  background:linear-gradient(180deg,rgba(3,12,23,.91),rgba(3,11,21,.94) 18%,rgba(3,11,21,.91) 82%,rgba(3,11,21,.95));
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 -30px 90px rgba(0,0,0,.28);
+}
+.legacy-hit,.legacy-scroll {position:absolute;z-index:5;display:block;border:0;background:transparent;text-decoration:none}
+.legacy-hit:focus-visible,.legacy-scroll:focus-visible {outline:2px solid rgba(145,201,255,.95);outline-offset:2px}
+.legacy-expertises {left:20.4%;bottom:0;width:5.5%;height:5.4%}
+.legacy-about {left:25.7%;bottom:0;width:5.7%;height:5.4%}
+.legacy-contact {left:31.3%;bottom:0;width:5.5%;height:5.4%}
+.legacy-scroll {left:48.2%;top:83.3%;width:3.6%;height:8%;border-radius:50%}
+/* The compact navigation appears only after leaving the cover. */
+body.paradigm-corporate .floating-nav:not(.is-visible){opacity:0!important;visibility:hidden!important;transform:translateY(-8px)!important;pointer-events:none!important}
+@media(max-width:736px){
+  body.home-cinematic .cinematic-hero-art{object-fit:cover;object-position:50% 50%;opacity:1}
+  .legacy-hit{display:none}
+  .legacy-scroll{left:43%;top:81%;width:14%;height:10%}
+  body.paradigm-corporate.home-cinematic::before{background-position:center center;filter:brightness(.70) saturate(.76)}
+}
