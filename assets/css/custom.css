@@ -1657,108 +1657,36 @@ body.paradigm-corporate .floating-nav-panel a[aria-current="page"]{
   -webkit-text-size-adjust: 100%;
 }
 
-
-/* V24 — targeted cover cleanup, based strictly on V21.
-   The legacy menu + circular arrow are baked into hero-cinematic.png.
-   Mask only the lower legacy zone, then draw the new cue in HTML/CSS. */
-.cover-legacy-mask {
-  position: absolute;
-  z-index: 4;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 19%;
-  pointer-events: none;
-  background:
-    linear-gradient(to bottom,
-      rgba(5, 16, 31, 0) 0%,
-      rgba(5, 16, 31, .72) 43%,
-      rgba(5, 16, 31, .94) 72%,
-      rgba(5, 16, 31, .985) 100%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 38%, #000 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 38%, #000 100%);
-}
+/* V25 — clean cover cue: baked legacy UI removed from hero image; cue is native HTML/CSS. */
 .cover-discover {
-  position: absolute;
-  z-index: 6;
-  left: 50%;
-  bottom: clamp(28px, 4.8vh, 54px);
-  width: 120px;
-  height: 92px;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: rgba(220, 230, 239, .82);
-  text-decoration: none;
-  border: 0;
-  background: transparent;
+  position:absolute; z-index:6; left:50%; bottom:clamp(28px,4.6vh,52px);
+  width:120px; height:92px; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center;
+  color:rgba(220,230,239,.82); text-decoration:none; border:0; background:transparent;
 }
 .cover-discover-label {
-  font-family: "IBM Plex Sans", Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1;
-  font-weight: 500;
-  letter-spacing: .19em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  font-family:"IBM Plex Sans",Arial,sans-serif; font-size:12px; line-height:1; font-weight:500;
+  letter-spacing:.19em; text-transform:uppercase; white-space:nowrap;
 }
-.cover-discover-arrow {
-  position: relative;
-  display: block;
-  width: 18px;
-  height: 48px;
-  margin-top: 13px;
-}
+.cover-discover-arrow { position:relative; display:block; width:18px; height:48px; margin-top:13px; }
 .cover-discover-arrow::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1px;
-  height: 39px;
-  transform: translateX(-50%);
-  background: rgba(220, 230, 239, .72);
+  content:""; position:absolute; top:0; left:50%; width:1px; height:39px;
+  transform:translateX(-50%); background:rgba(220,230,239,.72);
 }
 .cover-discover-arrow::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 1px;
-  width: 8px;
-  height: 8px;
-  border-right: 1px solid rgba(220, 230, 239, .82);
-  border-bottom: 1px solid rgba(220, 230, 239, .82);
-  transform: translateX(-50%) rotate(45deg);
+  content:""; position:absolute; left:50%; bottom:1px; width:8px; height:8px;
+  border-right:1px solid rgba(220,230,239,.82); border-bottom:1px solid rgba(220,230,239,.82);
+  transform:translateX(-50%) rotate(45deg);
 }
-.cover-discover:focus-visible {
-  outline: 1px solid rgba(145,201,255,.9);
-  outline-offset: 8px;
-}
+.cover-discover:focus-visible { outline:1px solid rgba(145,201,255,.9); outline-offset:8px; }
 @media (hover:hover) and (pointer:fine) {
-  .cover-discover {
-    transition: color .22s ease, transform .22s ease;
-  }
-  .cover-discover:hover {
-    color: rgba(239, 245, 249, .98);
-    transform: translateX(-50%) translateY(3px);
-  }
-  .cover-discover:hover .cover-discover-arrow::before {
-    background: rgba(239, 245, 249, .9);
-  }
+  .cover-discover { transition:color .22s ease, transform .22s ease; }
+  .cover-discover:hover { color:rgba(239,245,249,.98); transform:translateX(-50%) translateY(3px); }
 }
 @media (max-width:736px) {
-  .cover-legacy-mask { height: 22%; }
-  .cover-discover {
-    bottom: max(24px, env(safe-area-inset-bottom));
-    height: 86px;
-  }
-  .cover-discover-label { font-size: 11px; }
-  .cover-discover-arrow { height: 43px; }
-  .cover-discover-arrow::before { height: 34px; }
+  .cover-discover { bottom:max(24px,env(safe-area-inset-bottom)); height:86px; }
+  .cover-discover-label { font-size:11px; letter-spacing:.16em; }
+  .cover-discover-arrow { height:43px; }
+  .cover-discover-arrow::before { height:34px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .cover-discover { transition: none !important; }
-}
+@media (prefers-reduced-motion:reduce) { .cover-discover { transition:none!important; } }
