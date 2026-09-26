@@ -141,3 +141,69 @@ body > .floating-nav { position: fixed !important; top: 18px; right: 22px; left:
 	margin: 0;
 	border-radius: 9px;
 }
+
+/* Paradigm AI — cinematic institutional sky */
+#wrapper > .bg {
+	position: fixed;
+	overflow: hidden;
+}
+
+#wrapper > .bg::after {
+	content: "";
+	position: absolute;
+
+	top: -3%;
+	left: -15%;
+	width: 130%;
+	height: 55%;
+
+	background-image: url("../../images/sky-overlay.png");
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: 112% auto;
+
+	pointer-events: none;
+
+	opacity: .18;
+	mix-blend-mode: screen;
+
+	filter:
+		brightness(.62)
+		saturate(.70)
+		contrast(.94);
+
+	transform: translate3d(-8%, 0, 0) scale(1.16);
+	transform-origin: 50% 35%;
+
+	animation: paradigm-sky-drift 70s ease-in-out infinite alternate;
+}
+
+@keyframes paradigm-sky-drift {
+	0% {
+		transform: translate3d(-8%, 0, 0) scale(1.16);
+	}
+
+	45% {
+		transform: translate3d(-1%, -0.8%, 0) scale(1.18);
+	}
+
+	100% {
+		transform: translate3d(8%, -1.5%, 0) scale(1.16);
+	}
+}
+
+@media screen and (max-width:736px) {
+	#wrapper > .bg::after {
+		height: 48%;
+		opacity: .13;
+		background-size: auto 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#wrapper > .bg::after {
+		animation: none !important;
+		opacity: .15;
+		transform: scale(1.18);
+	}
+}
