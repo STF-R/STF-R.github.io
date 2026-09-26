@@ -1,32 +1,25 @@
-Massively by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Paradigm AI — site institutionnel
+================================
 
+Site statique destiné à GitHub Pages pour https://paradigm-ai.fr/
 
-This is Massively, a text-heavy, article-oriented design built around a huge background
-image (with a new parallax implementation I'm testing) and scroll effects (powered by
-Scrollex). A *slight* departure from all the one-pagers I've been doing lately, but one
-that fulfills a few user requests and makes use of some new techniques I've been wanting
-to try out. Enjoy it :)
+Publication
+-----------
+Le fichier CNAME doit rester à la racine du dépôt.
+Le formulaire de contact utilise Formspree.
+Aucun secret, token ou mot de passe ne doit être ajouté au dépôt.
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+Structure principale
+--------------------
+index.html                 Expertises
+thisisparadigmai.html      À propos / Genèse / Technologies
+references.html            Redirection de compatibilité vers la Genèse
+assets/css/custom.css      Personnalisation graphique
+assets/js/custom.js        Animation du fond et formulaire
+images/bg-dynamic.jpg      Fond principal
 
-(* = not included)
-
-AJ
-aj@lkn.io | @ajlkn
-
-
-Credits:
-
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+Crédits du template d'origine
+-----------------------------
+Massively by HTML5 UP — html5up.net
+Licence CCA 3.0 — html5up.net/license
+Font Awesome, jQuery, Scrollex et Responsive Tools sont utilisés par le template.
