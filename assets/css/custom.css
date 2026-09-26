@@ -142,68 +142,86 @@ body > .floating-nav { position: fixed !important; top: 18px; right: 22px; left:
 	border-radius: 9px;
 }
 
-/* Paradigm AI — cinematic institutional sky */
+/* 2026-09 — Paradigm mathematical / neural hero */
+#wrapper { background:#030b15; }
 #wrapper > .bg {
-	position: fixed;
-	overflow: hidden;
+  background-color:#030b15 !important;
+  background-image:
+    linear-gradient(180deg,rgba(2,9,17,.08),rgba(2,10,19,.22)),
+    url("../../images/hero-math-network.svg") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+  background-attachment:fixed !important;
 }
-
-#wrapper > .bg::after {
-	content: "";
-	position: absolute;
-
-	top: -3%;
-	left: -15%;
-	width: 130%;
-	height: 55%;
-
-	background-image: url("../../images/sky-overlay.png");
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: 112% auto;
-
-	pointer-events: none;
-
-	opacity: .18;
-	mix-blend-mode: screen;
-
-	filter:
-		brightness(.62)
-		saturate(.70)
-		contrast(.94);
-
-	transform: translate3d(-8%, 0, 0) scale(1.16);
-	transform-origin: 50% 35%;
-
-	animation: paradigm-sky-drift 70s ease-in-out infinite alternate;
+#data-flow { opacity:.34; mix-blend-mode:screen; }
+#intro {
+  min-height:100vh;
+  padding:7rem 1.5rem 5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
-
-@keyframes paradigm-sky-drift {
-	0% {
-		transform: translate3d(-8%, 0, 0) scale(1.16);
-	}
-
-	45% {
-		transform: translate3d(-1%, -0.8%, 0) scale(1.18);
-	}
-
-	100% {
-		transform: translate3d(8%, -1.5%, 0) scale(1.16);
-	}
+#intro .paradigm-mark { width:118px; margin:0 auto 1rem; opacity:.96; }
+#intro .hero-brand {
+  margin:0 0 2.2rem;
+  font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  font-size:.92rem;
+  font-weight:500;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:rgba(205,224,242,.88);
 }
-
+#intro h1 {
+  max-width:980px;
+  margin:0 auto 1.25rem;
+  font-size:clamp(2.15rem,4.2vw,4.35rem);
+  line-height:1.08;
+  font-weight:500;
+  letter-spacing:.055em;
+  text-wrap:balance;
+  color:#f5f8fb;
+  text-shadow:0 3px 32px rgba(0,0,0,.68);
+}
+#intro .hero-subtitle {
+  max-width:900px;
+  margin:0 auto 2rem;
+  font-size:clamp(.82rem,1.15vw,1rem);
+  line-height:1.8;
+  letter-spacing:.12em;
+  text-transform:none;
+  color:rgba(201,218,233,.84);
+}
+#intro .hero-actions { margin:0; }
+#intro .hero-actions .button {
+  min-width:270px;
+  height:3.25rem;
+  line-height:3.25rem;
+  padding:0 1.65rem;
+  border-radius:6px;
+  background:rgba(7,20,36,.24);
+  box-shadow:inset 0 0 0 1px rgba(203,225,243,.68),0 10px 36px rgba(0,0,0,.20);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  font-size:.72rem;
+  letter-spacing:.13em;
+  color:#edf6fd !important;
+}
+#intro .hero-actions .button:hover { background:rgba(122,183,231,.10); box-shadow:inset 0 0 0 1px #fff,0 12px 42px rgba(0,0,0,.28); }
+#header { background:transparent; }
+#main { background:rgba(7,20,36,.92); }
+#main > .post.featured { padding-top:5rem; }
+.floating-nav-panel { background:rgba(3,13,24,.80); border-color:rgba(130,184,227,.18); }
 @media screen and (max-width:736px) {
-	#wrapper > .bg::after {
-		height: 48%;
-		opacity: .13;
-		background-size: auto 100%;
-	}
+  #wrapper > .bg { background-attachment:scroll !important; background-position:42% center !important; }
+  #data-flow { opacity:.22; }
+  #intro { padding:6rem 1.15rem 4rem; }
+  #intro .paradigm-mark { width:94px; }
+  #intro .hero-brand { font-size:.78rem; margin-bottom:1.65rem; }
+  #intro h1 { font-size:clamp(1.75rem,8vw,2.55rem); letter-spacing:.035em; }
+  #intro .hero-subtitle { font-size:.78rem; letter-spacing:.07em; line-height:1.65; }
+  #intro .hero-actions .button { min-width:230px; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-	#wrapper > .bg::after {
-		animation: none !important;
-		opacity: .15;
-		transform: scale(1.18);
-	}
-}
+@media (prefers-reduced-motion:reduce) { #intro .paradigm-mark { animation:none; } }

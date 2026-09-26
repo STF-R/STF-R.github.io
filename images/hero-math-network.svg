@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#030b15"/><stop offset=".52" stop-color="#071728"/><stop offset="1" stop-color="#030a13"/></linearGradient>
+    <radialGradient id="gold"><stop stop-color="#fff8dd"/><stop offset=".18" stop-color="#f4c77b" stop-opacity=".95"/><stop offset=".52" stop-color="#c48b45" stop-opacity=".22"/><stop offset="1" stop-color="#c48b45" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blue"><stop stop-color="#d8f1ff"/><stop offset=".2" stop-color="#70bfff" stop-opacity=".85"/><stop offset="1" stop-color="#4aa7ef" stop-opacity="0"/></radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <ellipse cx="1580" cy="430" rx="370" ry="330" fill="#123154" opacity=".14" filter="url(#soft)"/>
+  <ellipse cx="210" cy="690" rx="430" ry="380" fill="#0c3760" opacity=".13" filter="url(#soft)"/>
+
+  <!-- left neural field -->
+  <g fill="none" stroke-linecap="round" opacity=".8">
+    <path d="M-80 290 C170 330 150 510 390 555 S610 780 880 790" stroke="#78bded" stroke-width="2" opacity=".55"/>
+    <path d="M-40 430 C170 420 250 620 470 650 S700 760 990 845" stroke="#d9a55c" stroke-width="1.4" opacity=".45"/>
+    <path d="M-60 560 C150 520 250 710 470 735 S720 850 1040 870" stroke="#4b9fe2" stroke-width="1.2" opacity=".45"/>
+    <path d="M40 210 L145 360 L255 300 L330 455 L470 410 L560 560 L690 525" stroke="#69b8f1" stroke-width="1.2" opacity=".55"/>
+    <path d="M20 470 L165 430 L250 590 L390 555 L470 735 L625 670 L760 800" stroke="#e2aa61" stroke-width="1" opacity=".48"/>
+    <path d="M80 700 L220 620 L350 760 L470 650 L590 790 L720 735 L900 870" stroke="#6dbcf4" stroke-width="1" opacity=".42"/>
+    <path d="M-20 330 L165 430 M145 360 L250 590 M255 300 L390 555 M330 455 L470 650 M470 410 L625 670 M560 560 L720 735" stroke="#7fbce8" stroke-width=".8" opacity=".34"/>
+  </g>
+  <g filter="url(#glow)">
+    <g fill="#8ed0ff"><circle cx="145" cy="360" r="5"/><circle cx="255" cy="300" r="3"/><circle cx="330" cy="455" r="4"/><circle cx="470" cy="410" r="3"/><circle cx="560" cy="560" r="5"/><circle cx="690" cy="525" r="3"/><circle cx="220" cy="620" r="5"/><circle cx="350" cy="760" r="4"/><circle cx="590" cy="790" r="5"/><circle cx="720" cy="735" r="3"/></g>
+    <g fill="#f3bd6d"><circle cx="165" cy="430" r="7"/><circle cx="390" cy="555" r="5"/><circle cx="470" cy="650" r="4"/><circle cx="625" cy="670" r="5"/><circle cx="760" cy="800" r="4"/></g>
+  </g>
+
+  <!-- right mathematical construction -->
+  <g transform="translate(1510 435)" fill="none">
+    <g stroke="#d6a45d" opacity=".48" stroke-width="1.2">
+      <circle r="260"/><circle r="188"/><circle r="116"/><circle r="72"/>
+      <path d="M-310 0H330M0-340V350M-260-260L260 260M-260 260L260-260" opacity=".35"/>
+      <rect x="-260" y="-260" width="520" height="520" opacity=".22"/>
+    </g>
+    <g stroke="#f0bd70" stroke-width="2.2" opacity=".9" filter="url(#glow)">
+      <path d="M0 0 C18-8 28 10 20 26 C8 52-30 46-46 22 C-73-20-43-75 13-84 C93-97 153-27 141 53 C123 171-8 226-115 171 C-266 94-284-100-171-220 C-20-380 239-319 342-112"/>
+    </g>
+    <circle r="78" fill="url(#gold)" opacity=".9"/>
+    <circle r="18" fill="#fff3d2" opacity=".95" filter="url(#glow)"/>
+    <g stroke="#6bb9f1" stroke-width="1" opacity=".42">
+      <path d="M-310 170 C-190 85-85 95 0 0 S160-80 300-150"/>
+      <path d="M-280 215 C-120 155-55 120 0 0 S150-140 290-220"/>
+    </g>
+  </g>
+
+  <!-- equations, restrained -->
+  <g fill="#82b8e3" opacity=".52" font-family="Georgia, serif" font-style="italic">
+    <text x="1380" y="155" font-size="34">φ = (1 + √5) / 2</text>
+    <text x="1780" y="285" font-size="32">f(x)</text>
+    <text x="1775" y="635" font-size="46">∫</text>
+    <text x="1645" y="820" font-size="42">Σ</text>
+  </g>
+  <g fill="#6dbbf4" opacity=".55" filter="url(#glow)"><circle cx="1780" cy="185" r="4"/><circle cx="1710" cy="325" r="5"/><circle cx="1840" cy="510" r="4"/></g>
+</svg>
