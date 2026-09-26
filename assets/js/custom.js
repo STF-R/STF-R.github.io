@@ -97,7 +97,7 @@
   });
 })();
 
-/* V18 — active section state based on document section boundaries. */
+/* V19 — active section state based on document boundaries, with end-of-page Contact handling. */
 (function(){
   'use strict';
   var links=Array.prototype.slice.call(document.querySelectorAll('.floating-nav-panel a[href^="#"]'));
@@ -113,6 +113,15 @@
        offsets avoid the ambiguity caused by very tall sections such as Expertises. */
     var readingY=window.scrollY+Math.min(Math.max(window.innerHeight*.28,120),240);
     var active=items[0];
+
+    /* The final Contact section cannot always reach the reading line because the
+       document ends first. When the viewport is effectively at the bottom, make
+       the last section active explicitly. The small tolerance absorbs fractional
+       pixels and mobile browser chrome without changing any earlier thresholds. */
+    var atPageEnd=(window.scrollY+window.innerHeight)>=document.documentElement.scrollHeight-8;
+    if(atPageEnd){
+      active=items[items.length-1];
+    } else {
     for(var i=0;i<items.length;i++){
       var top=items[i].section.getBoundingClientRect().top+window.scrollY;
       var nextTop=(i+1<items.length)
@@ -120,6 +129,7 @@
         : Number.POSITIVE_INFINITY;
       if(readingY>=top && readingY<nextTop){active=items[i];break;}
       if(readingY>=top)active=items[i];
+    }
     }
     links.forEach(function(link){
       var on=link===active.link;

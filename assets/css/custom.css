@@ -1437,3 +1437,99 @@ body.paradigm-corporate .floating-nav-panel a[aria-current="page"]{
   color:#edf3f8!important;
   background:rgba(121,189,243,.11);
 }
+
+
+/* V20 — Ecosystem cards: restrained institutional polish */
+#ecosysteme .tech-grid {
+  gap: clamp(14px, 1.35vw, 22px);
+}
+#ecosysteme .tech-card {
+  position: relative;
+  min-height: 142px;
+  padding: clamp(22px, 2vw, 30px);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(151, 177, 201, .16);
+  border-radius: 2px;
+  background:
+    linear-gradient(145deg, rgba(19, 38, 59, .78), rgba(8, 24, 42, .64));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 10px 28px rgba(0, 8, 20, .08);
+  transition:
+    transform .28s cubic-bezier(.2,.7,.2,1),
+    border-color .28s ease,
+    background .28s ease,
+    box-shadow .28s ease;
+}
+#ecosysteme .tech-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(92, 174, 230, .78), rgba(203, 154, 76, .46));
+  transition: width .28s ease, opacity .28s ease;
+}
+#ecosysteme .tech-card::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 110px;
+  height: 110px;
+  right: -54px;
+  bottom: -62px;
+  border: 1px solid rgba(91, 166, 218, .09);
+  border-radius: 50%;
+  box-shadow: 0 0 0 22px rgba(91, 166, 218, .018);
+  transition: transform .35s ease, border-color .28s ease;
+}
+#ecosysteme .tech-card h3 {
+  margin: 0 0 11px;
+  color: #dce6ef;
+  font-size: clamp(1.02rem, .95rem + .22vw, 1.16rem);
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -.015em;
+}
+#ecosysteme .tech-card p {
+  margin: 0;
+  max-width: 26ch;
+  color: rgba(196, 210, 222, .72);
+  font-size: .92rem;
+  line-height: 1.5;
+  letter-spacing: .005em;
+}
+@media (hover:hover) and (pointer:fine) {
+  #ecosysteme .tech-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(112, 177, 221, .31);
+    background:
+      linear-gradient(145deg, rgba(22, 44, 67, .88), rgba(9, 27, 47, .72));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.035),
+      0 16px 34px rgba(0, 8, 20, .14);
+  }
+  #ecosysteme .tech-card:hover::before {
+    width: 72px;
+  }
+  #ecosysteme .tech-card:hover::after {
+    transform: translate(-6px,-5px);
+    border-color: rgba(203, 154, 76, .14);
+  }
+}
+@media (max-width: 600px) {
+  #ecosysteme .tech-card {
+    min-height: 124px;
+    padding: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #ecosysteme .tech-card,
+  #ecosysteme .tech-card::before,
+  #ecosysteme .tech-card::after {
+    transition: none;
+  }
+}
