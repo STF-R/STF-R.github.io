@@ -1763,3 +1763,21 @@ body.home-cinematic .cinematic-hero-art {
     bottom: clamp(4px, 1.2svh, 10px) !important;
   }
 }
+
+
+/* V32 — bilingual navigation switch. */
+.floating-nav-panel a.language-switch {
+  margin-left: .32rem;
+  padding-left: .78rem;
+  padding-right: .78rem;
+  border-left: 1px solid rgba(178,205,230,.18);
+  color: #a9c8e8;
+}
+@media (max-width:736px) {
+  .floating-nav-panel a.language-switch {
+    margin-left: 0;
+    margin-top: .18rem;
+    border-left: 0;
+    border-top: 1px solid rgba(178,205,230,.18);
+  }
+}
