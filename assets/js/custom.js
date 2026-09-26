@@ -97,31 +97,42 @@
   });
 })();
 
-/* V17 — deterministic active section state for the persistent navigation. */
+/* V18 — active section state based on document section boundaries. */
 (function(){
   'use strict';
   var links=Array.prototype.slice.call(document.querySelectorAll('.floating-nav-panel a[href^="#"]'));
-  if(!links.length)return;
   var items=links.map(function(link){
-    var id=link.getAttribute('href').slice(1);
-    return {link:link,section:document.getElementById(id)};
-  }).filter(function(item){return item.section;});
+    var section=document.querySelector(link.getAttribute('href'));
+    return section ? {link:link,section:section} : null;
+  }).filter(Boolean);
   if(!items.length)return;
   var ticking=false;
   function updateActive(){
     ticking=false;
-    var probe=Math.max(96,window.innerHeight*.30);
+    /* A stable reading line below the floating navigation. Absolute document
+       offsets avoid the ambiguity caused by very tall sections such as Expertises. */
+    var readingY=window.scrollY+Math.min(Math.max(window.innerHeight*.28,120),240);
     var active=items[0];
     for(var i=0;i<items.length;i++){
-      var rect=items[i].section.getBoundingClientRect();
-      if(rect.top<=probe)active=items[i];
-      if(rect.top<=probe && rect.bottom>probe){active=items[i];break;}
+      var top=items[i].section.getBoundingClientRect().top+window.scrollY;
+      var nextTop=(i+1<items.length)
+        ? items[i+1].section.getBoundingClientRect().top+window.scrollY
+        : Number.POSITIVE_INFINITY;
+      if(readingY>=top && readingY<nextTop){active=items[i];break;}
+      if(readingY>=top)active=items[i];
     }
-    links.forEach(function(link){link.removeAttribute('aria-current');});
-    active.link.setAttribute('aria-current','true');
+    links.forEach(function(link){
+      var on=link===active.link;
+      if(on)link.setAttribute('aria-current','page');
+      else link.removeAttribute('aria-current');
+      link.classList.toggle('is-active',on);
+    });
   }
-  function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(updateActive);}}
+  function requestUpdate(){
+    if(!ticking){ticking=true;requestAnimationFrame(updateActive);}
+  }
   addEventListener('scroll',requestUpdate,{passive:true});
   addEventListener('resize',requestUpdate,{passive:true});
+  addEventListener('load',updateActive,{once:true});
   updateActive();
 })();

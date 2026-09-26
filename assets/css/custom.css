@@ -1382,3 +1382,58 @@ body.paradigm-corporate .corp-form .corp-button{
 @media(max-width:700px){
   body.paradigm-corporate .corp-form .corp-button{width:100%;justify-content:center}
 }
+
+/* 2026-09 — V18 verified navigation + contact geometry */
+body.paradigm-corporate .contact-section{
+  grid-template-columns:minmax(17rem,.56fr) minmax(42rem,1.44fr);
+  gap:clamp(2.5rem,4vw,4.5rem);
+}
+body.paradigm-corporate .corp-form{
+  width:100%;
+  max-width:none;
+  justify-self:stretch;
+  padding:clamp(1.8rem,2.4vw,2.5rem);
+}
+body.paradigm-corporate .corp-form>.fields{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  width:100%;
+  margin:0 0 1.5rem 0;
+  padding:0;
+  gap:1.4rem 1.4rem;
+}
+body.paradigm-corporate .corp-form>.fields>.field{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0;
+  min-width:0;
+}
+body.paradigm-corporate .corp-form>.fields>.field:nth-child(3){grid-column:1/-1}
+body.paradigm-corporate .corp-form .corp-button{
+  width:auto;
+  min-width:0;
+  min-height:3rem;
+  margin:0;
+  padding:.72rem 1.15rem;
+  gap:.9rem;
+  justify-content:flex-start;
+  font-size:.86rem;
+  letter-spacing:.055em;
+}
+@media(max-width:1100px){
+  body.paradigm-corporate .contact-section{grid-template-columns:minmax(16rem,.62fr) minmax(34rem,1.38fr);gap:2.5rem}
+}
+@media(max-width:1000px){
+  body.paradigm-corporate .contact-section{grid-template-columns:1fr;gap:2.75rem}
+}
+@media(max-width:700px){
+  body.paradigm-corporate .corp-form>.fields{grid-template-columns:1fr}
+  body.paradigm-corporate .corp-form>.fields>.field:nth-child(3){grid-column:auto}
+  body.paradigm-corporate .corp-form .corp-button{width:auto;justify-content:flex-start}
+}
+body.paradigm-corporate .floating-nav-panel a.is-active,
+body.paradigm-corporate .floating-nav-panel a[aria-current="page"]{
+  color:#edf3f8!important;
+  background:rgba(121,189,243,.11);
+}
