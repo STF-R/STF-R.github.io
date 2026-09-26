@@ -677,3 +677,133 @@ body.paradigm-corporate.home-cinematic .corp-footer{
     box-shadow:0 -22px 60px rgba(0,0,0,.24);
   }
 }
+
+/* 2026-09 — V11 hierarchy, readable measures, technology cards and contact form polish */
+:root{
+  --type-section-title:clamp(1.65rem,1.35rem + .9vw,2.35rem);
+  --content-safe-pad:clamp(1.25rem,2.4vw,2.75rem);
+}
+/* On the About page, all editorial section titles below the hero share one rank. */
+body.paradigm-corporate:not(.home-cinematic) .narrative-grid h2,
+body.paradigm-corporate:not(.home-cinematic) .ecosystem-section .section-intro h2,
+body.paradigm-corporate:not(.home-cinematic) .contact-copy h2{
+  margin:0;
+  color:#f3f7fb;
+  font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  font-size:var(--type-section-title);
+  font-weight:450;
+  line-height:1.15;
+  letter-spacing:-.02em;
+  text-transform:none;
+}
+/* Keep right-column editorial copy away from the panel edge and align its measure. */
+body.paradigm-corporate .section-intro>p,
+body.paradigm-corporate .narrative-grid>p,
+body.paradigm-corporate .expertise-list article>p{
+  box-sizing:border-box;
+  padding-right:var(--content-safe-pad);
+}
+body.paradigm-corporate .section-intro>p{
+  width:100%;
+  max-width:36rem;
+  justify-self:end;
+}
+body.paradigm-corporate .narrative-grid>p{max-width:48rem}
+
+/* Technology: return to restrained cards rather than a plain ruled list. */
+body.paradigm-corporate .tech-lines{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+  margin-top:3.5rem;
+  border-top:0;
+}
+body.paradigm-corporate .tech-lines>div{
+  display:flex;
+  min-height:8.5rem;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:1.6rem;
+  padding:1.55rem 1.65rem;
+  border:1px solid rgba(137,185,230,.14);
+  background:linear-gradient(145deg,rgba(14,31,49,.58),rgba(5,17,31,.42));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018);
+}
+body.paradigm-corporate .tech-lines>div:hover{
+  border-color:rgba(137,185,230,.24);
+  background:linear-gradient(145deg,rgba(17,37,58,.64),rgba(6,19,34,.48));
+}
+body.paradigm-corporate .tech-lines span{color:#7894ae}
+body.paradigm-corporate .tech-lines strong{
+  max-width:30rem;
+  color:#e0eaf3;
+  font-size:clamp(.98rem,.94rem + .12vw,1.06rem);
+  line-height:1.55;
+  letter-spacing:.01em;
+}
+
+/* Contact: explicit fields, clear grouping, calm corporate surface. */
+body.paradigm-corporate .contact-section{align-items:start}
+body.paradigm-corporate .corp-form{
+  box-sizing:border-box;
+  padding:clamp(1.5rem,2.5vw,2.35rem);
+  border:1px solid rgba(137,185,230,.14);
+  background:linear-gradient(145deg,rgba(13,29,47,.62),rgba(4,15,28,.52));
+}
+body.paradigm-corporate .corp-form .fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.25rem;
+}
+body.paradigm-corporate .corp-form .field{margin:0}
+body.paradigm-corporate .corp-form .field:nth-child(3){grid-column:1/-1}
+body.paradigm-corporate .corp-form label{
+  display:block;
+  margin:0 0 .6rem;
+  color:#91a8bd;
+  font-weight:500;
+  letter-spacing:.11em;
+}
+body.paradigm-corporate .corp-form input[type=text],
+body.paradigm-corporate .corp-form input[type=email],
+body.paradigm-corporate .corp-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid rgba(137,185,230,.18);
+  border-radius:2px;
+  background:rgba(2,10,20,.44);
+  color:#eef5fb;
+  padding:.9rem 1rem;
+  line-height:1.5;
+  box-shadow:none;
+  transition:border-color .18s ease,background .18s ease;
+}
+body.paradigm-corporate .corp-form textarea{min-height:9.5rem;resize:vertical}
+body.paradigm-corporate .corp-form input:focus,
+body.paradigm-corporate .corp-form textarea:focus{
+  outline:none;
+  border-color:rgba(109,185,246,.7);
+  background:rgba(5,18,32,.7);
+  box-shadow:0 0 0 3px rgba(109,185,246,.07);
+}
+body.paradigm-corporate .corp-form .corp-button{
+  min-width:10rem;
+  margin-top:1.35rem;
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.25rem;
+}
+body.paradigm-corporate .corp-form .form-status{margin:.9rem 0 0;font-size:.9rem;line-height:1.5}
+
+@media(max-width:900px){
+  body.paradigm-corporate .section-intro>p,
+  body.paradigm-corporate .narrative-grid>p,
+  body.paradigm-corporate .expertise-list article>p{padding-right:0}
+  body.paradigm-corporate .section-intro>p{justify-self:start}
+}
+@media(max-width:700px){
+  body.paradigm-corporate .tech-lines{grid-template-columns:1fr}
+  body.paradigm-corporate .corp-form .fields{grid-template-columns:1fr}
+  body.paradigm-corporate .corp-form .field:nth-child(3){grid-column:auto}
+}
