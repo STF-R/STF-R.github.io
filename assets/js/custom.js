@@ -48,7 +48,7 @@
     }
 
     function setFloating(){
-      var show=window.scrollY>Math.max(80,navThreshold-12);
+      var show=document.body.classList.contains('about-corporate') || window.scrollY>Math.max(80,navThreshold-12);
       floating.classList.toggle('is-visible',show);
       if(!show)closeFloating();
     }
