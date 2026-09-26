@@ -141,3 +141,12 @@ body > .floating-nav { position: fixed !important; top: 18px; right: 22px; left:
 	margin: 0;
 	border-radius: 9px;
 }
+
+/* Premium ambient network: the photographic background stays fixed while the
+   canvas provides slow cylindrical depth and data-flow motion. */
+#data-flow {
+  opacity:.76;
+  filter:saturate(.92) contrast(.96);
+}
+@media screen and (max-width:736px){#data-flow{opacity:.48}}
+@media (prefers-reduced-motion:reduce){#data-flow{display:none!important}}
