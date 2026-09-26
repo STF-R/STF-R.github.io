@@ -1755,18 +1755,11 @@ body.home-cinematic .cinematic-hero-art {
 }
 
 
-/* V29 — mobile-only scroll cue placement.
-   Keep the enlarged V26 cue, but anchor the complete DÉCOUVRIR + arrow group
-   lower in the mobile viewport so it cannot crowd the baked hero identity. */
+/* V30 — robust mobile placement for the decorative DÉCOUVRIR cue.
+   The cue keeps its validated V26 proportions and is positioned from the visual viewport
+   rather than stacked above the iOS safe-area, which previously pushed it too high. */
 @media (max-width: 736px) {
   .cover-discover {
-    bottom: max(8px, env(safe-area-inset-bottom)) !important;
-  }
-}
-
-/* Very short phones: reclaim a little more vertical room without resizing the cue. */
-@media (max-width: 736px) and (max-height: 680px) {
-  .cover-discover {
-    bottom: max(4px, env(safe-area-inset-bottom)) !important;
+    bottom: clamp(4px, 1.2svh, 10px) !important;
   }
 }
