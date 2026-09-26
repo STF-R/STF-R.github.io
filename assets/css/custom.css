@@ -119,3 +119,26 @@ body > .floating-nav { position: fixed !important; top: 18px; right: 22px; left:
   body > .floating-nav .floating-nav-toggle { position: relative; z-index: 2; }
   body > .floating-nav .floating-nav-panel { top: 52px; right: 0; left: auto; bottom: auto; }
 }
+
+/* Ajustement final des visuels/logo : le cadre épouse exactement l'image */
+.about-visual,
+.genese-visual {
+	width: fit-content;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+	overflow: hidden;
+	border-radius: 10px;
+	line-height: 0;
+}
+
+.about-visual img,
+.genese-visual img {
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	margin: 0;
+	border-radius: 9px;
+}
